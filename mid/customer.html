@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/customer_style.css">
+    <script src="js/customer_script.js" defer></script>
+
+    <title>Eventora - Customer Registration Form</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Eventora</h1>
+            <h2>Customer Registration Form</h2>
+        </div>
+
+        <form id="registrationForm" onsubmit="return collect_data()">
+
+            <fieldset>
+                <legend>Customer Personal Information</legend>
+
+                <table>
+                    <tr>
+                        <td>
+                            <label for="customerName">Customer Name:</label>
+                        </td>
+                        <td>
+                            <input type="text" name="customerName" id="customerName" placeholder="Enter Your Name">
+                            <p id="NameError"></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="customerAge">Age:</label>
+                        </td>
+                        <td>
+                            <input type="number" name="customerAge" id="customerAge" placeholder="Enter Your Age">
+                            <p id="AgeError"></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="customerEmail">Email:</label>
+                        </td>
+                        <td>
+                            <input type="email" name="customerEmail" id="customerEmail" placeholder="Enter Your Email">
+                            <p id="EmailError"></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label>Gender:</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="gender" id="Male" value="Male">
+                            <label for="Male">Male</label>
+
+                            <input type="radio" name="gender" id="Female" value="Female">
+                            <label for="Female">Female</label>
+
+                            <p id="GenderError"></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="DOB">Date of Birth:</label>
+                        </td>
+                        <td>
+                            <input type="date" name="DOB" id="DOB">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="Phone">Phone Number:</label>
+                        </td>
+                        <td>
+                            <input type="tel" name="Phone" id="Phone" placeholder="Enter Your Phone Number">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="Address">Address:</label>
+                        </td>
+                        <td>
+                            <textarea id="Address" for="Address"  style="resize: none;"> </textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="Country">Country:</label>
+                        </td>
+                        <td>
+                            <select name="Country" id="Country">
+                                <option value="">Select Country</option>
+                                <option value="Bangladesh">Bangladesh</option>
+                                <option value="USA">USA</option>
+                                <option value="UK">UK</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Japan">Japan</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend>Account Information</legend>
+
+                <table>
+                    <tr>
+                        <td>
+                            <label for="username">Username:</label>
+                        </td>
+                        <td>
+                            <input type="text" name="username" id="username" placeholder="Enter Username">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="password">Password:</label>
+                        </td>
+                        <td>
+                            <input type="password" name="password" id="password" placeholder="Enter Password">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="confirmPassword">Confirm Password:</label>
+                        </td>
+                        <td>
+                            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <br>
+
+            <input type="submit" id="submit" value="Register">
+            <input type="reset" id="reset" value="Reset">
+
+        </form>
+
+    </div>
+
+    <div class="footer">
+        <h5>Eventora - Event Management System</h5>
+    </div>
+
+</body>
+</html>
