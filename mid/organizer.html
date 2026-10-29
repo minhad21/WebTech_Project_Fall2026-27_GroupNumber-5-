@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventora - Organizer</title>
+    <link rel="stylesheet" href="css/organizer.css">
+</head>
+<body>
+
+    <h1>Eventora</h1>
+    <h2>Organizer Dashboard</h2>
+
+    <h3>Add New Event</h3>
+
+    <form id="eventForm">
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" required>
+        <br><br>
+
+        <label for="eventDate">Event Date:</label>
+        <input type="date" id="eventDate" required>
+        <br><br>
+
+        <label for="venue">Venue:</label>
+        <input type="text" id="venue" required>
+        <br><br>
+
+        <label for="ticketPrice">Ticket Price:</label>
+        <input type="number" id="ticketPrice" min="0.01" step="0.01" required>
+        <br><br>
+
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" min="1" step="1" required>
+        <br><br>
+
+        <button type="submit">Add Event</button>
+    </form>
+
+    <h3>My Events</h3>
+    <div id="eventList"></div>
+
+    <script src="js/organizer.js"></script>
+</body>
+</html>
