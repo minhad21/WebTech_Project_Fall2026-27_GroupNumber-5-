@@ -6,85 +6,59 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    color: #333333;
+    color: #333;
     line-height: 1.6;
 }
 
-/* Main Container */
 .container {
     width: 80%;
     max-width: 900px;
     margin: 30px auto;
-    background-color: white;
     padding: 25px;
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Header */
 .header {
-    text-align: center;
     background-color: #3157d5;
     color: white;
-    padding: 20px;
+    text-align: center;
+    padding: 25px;
     border-radius: 6px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .header h1 {
-    font-size: 30px;
-    margin-bottom: 5px;
+    font-size: 32px;
+    margin-bottom: 8px;
 }
 
 .header h2 {
     font-size: 22px;
-    font-weight: normal;
-}
-
-/* Navigation Bar */
-.topnav {
-    background-color: #263b75;
-    padding: 12px;
-    text-align: center;
-    margin-bottom: 25px;
-    border-radius: 5px;
-}
-
-.topnav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 18px;
-    display: inline-block;
-}
-
-.topnav a:hover {
-    background-color: white;
-    color: #263b75;
-    border-radius: 4px;
+    margin-bottom: 8px;
 }
 
 /* Form */
 form {
-    width: 100%;
+    margin-top: 20px;
 }
 
 fieldset {
-    border: 1px solid #cccccc;
-    border-radius: 6px;
+    border: 2px solid #3157d5;
     padding: 20px;
-    margin-bottom: 15px;
+    border-radius: 6px;
 }
 
 legend {
-    font-size: 18px;
-    font-weight: bold;
     color: #3157d5;
+    font-weight: bold;
     padding: 0 10px;
+    font-size: 18px;
 }
 
-/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -99,12 +73,11 @@ td:first-child {
     width: 35%;
 }
 
-/* Labels */
 label {
     font-weight: bold;
 }
 
-/* Text Fields */
+/* Input Fields */
 input[type="text"],
 input[type="number"],
 input[type="date"] {
@@ -112,7 +85,6 @@ input[type="date"] {
     padding: 10px;
     border: 1px solid #bbbbbb;
     border-radius: 4px;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     background-color: white;
 }
@@ -120,10 +92,10 @@ input[type="date"] {
 input:focus {
     outline: none;
     border-color: #3157d5;
-    box-shadow: 0 0 4px rgba(49, 87, 213, 0.3);
 }
 
 /* Error Messages */
+.error,
 #NameError,
 #DateError,
 #VenueError,
@@ -131,18 +103,18 @@ input:focus {
 #CapacityError {
     color: red;
     font-size: 13px;
-    margin-top: 4px;
+    margin-top: 5px;
 }
 
 /* Submit and Reset Buttons */
 input[type="submit"],
 input[type="reset"] {
-    padding: 11px 22px;
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 15px;
-    margin: 5px 8px 5px 0;
+    font-size: 14px;
+    margin-right: 10px;
 }
 
 input[type="submit"] {
@@ -155,4 +127,122 @@ input[type="submit"]:hover {
 }
 
 input[type="reset"] {
-    background-color: #dddd;}
+    background-color: #777777;
+    color: white;
+}
+
+input[type="reset"]:hover {
+    background-color: #555555;
+}
+
+/* Event Section */
+.event-section {
+    margin-top: 25px;
+}
+
+.event-section h3 {
+    color: #3157d5;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+/* Search */
+#searchEvent {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Total Events */
+#totalEvents {
+    font-weight: bold;
+    color: #3157d5;
+    margin-bottom: 15px;
+}
+
+/* Event Cards */
+.event-card {
+    background-color: #f8f8f8;
+    border: 1px solid #dddddd;
+    border-left: 5px solid #3157d5;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.event-card h4 {
+    color: #3157d5;
+    margin-bottom: 10px;
+}
+
+.event-card p {
+    margin-bottom: 7px;
+}
+
+/* Edit Button */
+.edit-btn {
+    background-color: #3157d5;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 8px;
+}
+
+.edit-btn:hover {
+    background-color: #2443ac;
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #b52a37;
+}
+
+/* Footer */
+.footer {
+    background-color: #3157d5;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    table,
+    tbody,
+    tr,
+    td {
+        display: block;
+        width: 100%;
+    }
+
+    td {
+        padding: 5px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        margin-bottom: 10px;
+    }
+}
