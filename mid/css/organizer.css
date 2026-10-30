@@ -1,0 +1,158 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Main Container */
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    background-color: #3157d5;
+    color: white;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.header h2 {
+    font-size: 22px;
+    font-weight: normal;
+}
+
+/* Navigation Bar */
+.topnav {
+    background-color: #263b75;
+    padding: 12px;
+    text-align: center;
+    margin-bottom: 25px;
+    border-radius: 5px;
+}
+
+.topnav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    display: inline-block;
+}
+
+.topnav a:hover {
+    background-color: white;
+    color: #263b75;
+    border-radius: 4px;
+}
+
+/* Form */
+form {
+    width: 100%;
+}
+
+fieldset {
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+legend {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3157d5;
+    padding: 0 10px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+td:first-child {
+    width: 35%;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+}
+
+/* Text Fields */
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: white;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3157d5;
+    box-shadow: 0 0 4px rgba(49, 87, 213, 0.3);
+}
+
+/* Error Messages */
+#NameError,
+#DateError,
+#VenueError,
+#PriceError,
+#CapacityError {
+    color: red;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Submit and Reset Buttons */
+input[type="submit"],
+input[type="reset"] {
+    padding: 11px 22px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 5px 8px 5px 0;
+}
+
+input[type="submit"] {
+    background-color: #3157d5;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #2443ac;
+}
+
+input[type="reset"] {
+    background-color: #dddd;}
