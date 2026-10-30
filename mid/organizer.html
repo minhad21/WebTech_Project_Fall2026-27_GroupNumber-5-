@@ -1,46 +1,111 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventora - Organizer</title>
+
     <link rel="stylesheet" href="css/organizer.css">
+    <script src="js/organizer.js" defer></script>
+
+    <title>Eventora - Organizer Dashboard</title>
 </head>
+
 <body>
 
-    <h1>Eventora</h1>
-    <h2>Organizer Dashboard</h2>
+    <div class="container">
 
-    <h3>Add New Event</h3>
+        <div class="header">
+            <h1>Eventora</h1>
+            <h2>Organizer Dashboard</h2>
+        </div>
 
-    <form id="eventForm">
-        <label for="eventName">Event Name:</label>
-        <input type="text" id="eventName" required>
-        <br><br>
+        <form id="eventForm">
 
-        <label for="eventDate">Event Date:</label>
-        <input type="date" id="eventDate" required>
-        <br><br>
+            <fieldset>
+                <legend>Event Information</legend>
 
-        <label for="venue">Venue:</label>
-        <input type="text" id="venue" required>
-        <br><br>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="eventName">Event Name:</label>
+                        </td>
+                        <td>
+                            <input type="text" name="eventName" id="eventName"
+                            placeholder="Enter Event Name">
+                            <p id="NameError"></p>
+                        </td>
+                    </tr>
 
-        <label for="ticketPrice">Ticket Price:</label>
-        <input type="number" id="ticketPrice" min="0.01" step="0.01" required>
-        <br><br>
+                    <tr>
+                        <td>
+                            <label for="eventDate">Event Date:</label>
+                        </td>
+                        <td>
+                            <input type="date" name="eventDate" id="eventDate">
+                            <p id="DateError"></p>
+                        </td>
+                    </tr>
 
-        <label for="capacity">Capacity:</label>
-        <input type="number" id="capacity" min="1" step="1" required>
-        <br><br>
+                    <tr>
+                        <td>
+                            <label for="venue">Venue:</label>
+                        </td>
+                        <td>
+                            <input type="text" name="venue" id="venue"
+                            placeholder="Enter Event Venue">
+                            <p id="VenueError"></p>
+                        </td>
+                    </tr>
 
-        <button type="submit">Add Event</button>
-    </form>
+                    <tr>
+                        <td>
+                            <label for="ticketPrice">Ticket Price:</label>
+                        </td>
+                        <td>
+                            <input type="number" name="ticketPrice" id="ticketPrice"
+                            placeholder="Enter Ticket Price" min="0.01" step="0.01">
+                            <p id="PriceError"></p>
+                        </td>
+                    </tr>
 
-    <h3>My Events</h3>
-    <div id="eventList"></div>
+                    <tr>
+                        <td>
+                            <label for="capacity">Event Capacity:</label>
+                        </td>
+                        <td>
+                            <input type="number" name="capacity" id="capacity"
+                            placeholder="Enter Maximum Capacity" min="1" step="1">
+                            <p id="CapacityError"></p>
+                        </td>
+                    </tr>
+                </table>
 
-    <script src="js/organizer.js"></script>
+            </fieldset>
+
+            <br>
+
+            <input type="submit" id="submit" value="Add Event">
+            <input type="reset" id="reset" value="Reset">
+
+        </form>
+
+        <br>
+
+        <div class="event-section">
+
+            <h3>My Events</h3>
+
+            <div id="eventList">
+                <!-- Newly added events will appear here -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <h5>Eventora - Event Management System</h5>
+    </div>
+
 </body>
 </html>
