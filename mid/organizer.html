@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -17,6 +18,7 @@
         <div class="header">
             <h1>Eventora</h1>
             <h2>Organizer Dashboard</h2>
+            <p>Manage your events easily</p>
         </div>
 
         <form id="eventForm">
@@ -30,9 +32,10 @@
                             <label for="eventName">Event Name:</label>
                         </td>
                         <td>
-                            <input type="text" name="eventName" id="eventName"
-                            placeholder="Enter Event Name">
-                            <p id="NameError"></p>
+                            <input type="text" name="eventName"
+                                id="eventName"
+                                placeholder="Enter Event Name">
+                            <p id="NameError" class="error"></p>
                         </td>
                     </tr>
 
@@ -41,8 +44,9 @@
                             <label for="eventDate">Event Date:</label>
                         </td>
                         <td>
-                            <input type="date" name="eventDate" id="eventDate">
-                            <p id="DateError"></p>
+                            <input type="date" name="eventDate"
+                                id="eventDate">
+                            <p id="DateError" class="error"></p>
                         </td>
                     </tr>
 
@@ -51,9 +55,10 @@
                             <label for="venue">Venue:</label>
                         </td>
                         <td>
-                            <input type="text" name="venue" id="venue"
-                            placeholder="Enter Event Venue">
-                            <p id="VenueError"></p>
+                            <input type="text" name="venue"
+                                id="venue"
+                                placeholder="Enter Event Venue">
+                            <p id="VenueError" class="error"></p>
                         </td>
                     </tr>
 
@@ -62,9 +67,11 @@
                             <label for="ticketPrice">Ticket Price:</label>
                         </td>
                         <td>
-                            <input type="number" name="ticketPrice" id="ticketPrice"
-                            placeholder="Enter Ticket Price" min="0.01" step="0.01">
-                            <p id="PriceError"></p>
+                            <input type="number" name="ticketPrice"
+                                id="ticketPrice"
+                                placeholder="Enter Ticket Price"
+                                min="0.01" step="0.01">
+                            <p id="PriceError" class="error"></p>
                         </td>
                     </tr>
 
@@ -73,9 +80,11 @@
                             <label for="capacity">Event Capacity:</label>
                         </td>
                         <td>
-                            <input type="number" name="capacity" id="capacity"
-                            placeholder="Enter Maximum Capacity" min="1" step="1">
-                            <p id="CapacityError"></p>
+                            <input type="number" name="capacity"
+                                id="capacity"
+                                placeholder="Enter Maximum Capacity"
+                                min="1" step="1">
+                            <p id="CapacityError" class="error"></p>
                         </td>
                     </tr>
                 </table>
@@ -94,6 +103,11 @@
         <div class="event-section">
 
             <h3>My Events</h3>
+
+            <input type="text" id="searchEvent"
+                placeholder="Search Event by Name">
+
+            <p id="totalEvents">Total Events: 0</p>
 
             <div id="eventList">
                 <!-- Newly added events will appear here -->
