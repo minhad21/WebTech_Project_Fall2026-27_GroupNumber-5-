@@ -17,8 +17,7 @@
      
         <fieldset>
             
-            <legend>Search and Check Event Tickets :</legend> 
-                     
+            <legend>Search and Check Event Tickets :</legend>              
             <form id="searchForm">
             <label for="bookingRef">Booking Reference:</label>
 
@@ -28,5 +27,38 @@
             </div>
         </form>
     </fieldset>
+    <p id="message"></p>
+
+    <div id="ticketDetails" hidden>
+        <h3>Ticket Details</h3>
+
+        <p>
+            <b>Booking ID:</b>
+            <span id="ref"></span>
+        </p>
+
+        <p>
+            <b>Attendee Name:</b>
+            <span id="attendee"></span>
+        </p>
+
+        <p>
+            <b>Event:</b>
+            <span id="eventName"></span>
+        </p>
+
+        <p>
+            <b>Quantity:</b>
+            <span id="quantity"></span>
+        </p>
+
+        <p>
+            <b>Ticket Status:</b>
+            <span id="status"></span>
+        </p>
+
+        <button type="button" id="checkInBtn"> Check In </button>
+    </div>
+
 </body>
 </html>
