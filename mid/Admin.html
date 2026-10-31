@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/admin.css">
+        <title> Eventora Admin </title>
+    </head>
+    <body>
+        <h1> Eventora Admin Dashboard </h1>
+
+        <a href="index.html"> Home </a> |
+        <a href="customer.html"> Customer </a> |
+        <a href="admin.html"> Admin </a> |
+        <a href="organizer.html"> Organizer </a> |
+        <a href="staff.html"> Staff </a>
+        <br> <br>
+
+        <fieldset>
+            <legend> Summary </legend>
+            <form id="summaryForm">
+                <table>
+                    <tr>
+                        <td> <label for="totalUsers"> Total Users : </label> </td>
+                        <td> <input type="number" name="totalUsers" id="totalUsers" value="120" min="0"> </td>
+                    </tr>
+                    <tr>
+                        <td> <label for="totalEvents"> Total Events : </label> </td>
+                        <td> <input type="number" name="totalEvents" id="totalEvents" value="4" min="0"> </td>
+                    </tr>
+                    <tr>
+                        <td> <label for="totalBookings"> Total Bookings : </label> </td>
+                        <td> <input type="number" name="totalBookings" id="totalBookings" value="45" min="0"> </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td> <input type="submit" id="updateSummaryBtn" value="Update Summary"> </td>
+                    </tr>
+                </table>
+            </form>
+            <p id="summaryMessage"> </p>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend> Manage Events </legend>
+            <table id="eventsTable" border="1">
+                <tr>
+                    <th> ID </th>
+                    <th> Event Name </th>
+                    <th> Organizer </th>
+                    <th> Date </th>
+                    <th> Status </th>
+                    <th> Action </th>
+                </tr>
+                <tr>
+                    <td> 1 </td>
+                    <td> Music Fest </td>
+                    <td> Sunrise Events </td>
+                    <td> 2026-12-10 </td>
+                    <td class="status"> Pending </td>
+                    <td>
+                        <button class="approveBtn"> Approve </button>
+                        <button class="rejectBtn"> Reject </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 2 </td>
+                    <td> Tech Expo </td>
+                    <td> Digital Hub </td>
+                    <td> 2026-12-20 </td>
+                    <td class="status"> Approved </td>
+                    <td>
+                        <button class="approveBtn"> Approve </button>
+                        <button class="rejectBtn"> Reject </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 3 </td>
+                    <td> Food Carnival </td>
+                    <td> Tasty Co. </td>
+                    <td> 2027-01-05 </td>
+                    <td class="status"> Pending </td>
+                    <td>
+                        <button class="approveBtn"> Approve </button>
+                        <button class="rejectBtn"> Reject </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 4 </td>
+                    <td> Art Exhibition </td>
+                    <td> Canvas Club </td>
+                    <td> 2027-01-15 </td>
+                    <td class="status"> Rejected </td>
+                    <td>
+                        <button class="approveBtn"> Approve </button>
+                        <button class="rejectBtn"> Reject </button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend> Manage Categories </legend>
+            <form id="categoryForm">
+                <table>
+                    <tr>
+                        <td> <label for="categoryName"> Category Name : </label> </td>
+                        <td> <input type="text" name="categoryName" id="categoryName" placeholder="Enter Category Name"> </td>
+                        <td> <input type="submit" id="addCategoryBtn" value="Add Category"> </td>
+                    </tr>
+                </table>
+            </form>
+
+            <p id="message"> </p>
+
+            <table id="categoryList" border="1">
+                <tr>
+                    <th> Category </th>
+                    <th> Action </th>
+                </tr>
+                <tr>
+                    <td> Concert </td>
+                    <td> <button class="deleteBtn"> Delete </button> </td>
+                </tr>
+                <tr>
+                    <td> Conference </td>
+                    <td> <button class="deleteBtn"> Delete </button> </td>
+                </tr>
+                <tr>
+                    <td> Workshop </td>
+                    <td> <button class="deleteBtn"> Delete </button> </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <script src="js/common.js"></script>
+        <script src="js/admin.js"></script>
+    </body>
+</html>
