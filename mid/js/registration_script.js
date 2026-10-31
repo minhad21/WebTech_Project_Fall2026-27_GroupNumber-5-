@@ -12,16 +12,20 @@ function collect_data()
     let validateDOB = validateDateOfBirth();
     let validAddress = validateAddress();
 
-    if(validName && validateAgeResult && validateEmailResult &&
-       validategender && validPhone && validCountry &&
-       validUsername && validPassword && validateDOB && validAddress)
-    {
-        alert("Registration Successful!");
+    let role = document.getElementById("registerAs").value;
 
-        window.location.href = "customer_dashboard.html";
-
-        return false;
-    }
+if (role === "customer")
+{
+    window.location.href = "customer_dashboard.html";
+}
+else if (role === "organizer")
+{
+    window.location.href = "organizer.html";
+}
+else if (role === "staff")
+{
+    window.location.href = "staff.html";
+}
 
     return false;
 }

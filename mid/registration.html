@@ -26,6 +26,15 @@
                 <legend> Personal Information</legend>
 
                 <table>
+                    <label for="registerAs">Register As</label>
+
+                    <select id="registerAs" name="registerAs" required>
+                     <option value="">Select Your Role</option>
+                     <option value="customer">Customer</option>
+                     <option value="organizer">Organizer</option>
+                     <option value="staff">Staff</option>
+                   </select>
+                   <p id="RoleError" class="error"></p>
                     <tr>
                         <td>
                             <label for="customerName"> Name:</label>
@@ -164,6 +173,10 @@
             <input type="reset" id="reset" value="Reset">
 
         </form>
+        <p class="login-link">
+            Already have an account?
+            <a href="login.html">Login Here</a>
+        </p>
 
     </div>
 
