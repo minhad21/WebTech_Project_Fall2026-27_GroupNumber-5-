@@ -12,9 +12,18 @@ function collect_data()
     let validateDOB = validateDateOfBirth();
     let validAddress = validateAddress();
 
-    return validName && validateAgeResult && validateEmailResult &&
-           validategender && validPhone && validCountry &&
-           validUsername && validPassword && validateDOB && validAddress;
+    if(validName && validateAgeResult && validateEmailResult &&
+       validategender && validPhone && validCountry &&
+       validUsername && validPassword && validateDOB && validAddress)
+    {
+        alert("Registration Successful!");
+
+        window.location.href = "customer_dashboard.html";
+
+        return false;
+    }
+
+    return false;
 }
 
 
