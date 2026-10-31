@@ -9,10 +9,12 @@ function collect_data()
     let validCountry = validateCountry();
     let validUsername = validateUsername();
     let validPassword = validatePassword();
+    let validateDOB = validateDateOfBirth();
+    let validAddress = validateAddress();
 
     return validName && validateAgeResult && validateEmailResult &&
            validategender && validPhone && validCountry &&
-           validUsername && validPassword;
+           validUsername && validPassword && validateDOB && validAddress;
 }
 
 
@@ -113,39 +115,75 @@ function validateGender()
     }
 }
 
-
-function validatePhone()
+function validateDateOfBirth()
 {
-    let Phone = document.getElementById("Phone").value.trim();
+    let DOB = document.getElementById("DOB").value;
+    let DOBError = document.getElementById("DOBError");
 
-    if(Phone == "")
+    if(DOB == "")
     {
-        alert("Please Enter The Phone Number");
-        return false;
-    }
-    else if(Phone.length < 10)
-    {
-        alert("Phone Number Must be at least 10 Digits");
+        DOBError.innerHTML = "Please Select Your Date of Birth";
         return false;
     }
     else
     {
+        DOBError.innerHTML = "Date of Birth: " + DOB;
         return true;
     }
 }
 
-
-function validateCountry()
+function validatePhone()
 {
-    let Country = document.getElementById("Country").value;
+    let phone = Number(document.getElementById("Phone").value);
+    let phoneError = document.getElementById("PhoneError");
 
-    if(Country == "")
+    if(document.getElementById("Phone").value === "")
     {
-        alert("Please Select Your Country");
+        phoneError.innerHTML = "Please Enter The Phone Number";
+        return false;
+    }
+    else if(phone < 1000000000 || phone > 9999999999)
+    {
+        phoneError.innerHTML = "Phone Number Must be 10 Digits";
         return false;
     }
     else
     {
+        phoneError.innerHTML = "Customer Phone: " + phone;
+        return true;
+    }
+}
+
+function validateAddress()
+{
+    let Address = document.getElementById("Address").value.trim();
+    let AddressError = document.getElementById("AddressError");
+
+    if(Address == "")
+    {
+        AddressError.innerHTML = "Please Enter Your Address";
+        return false;
+    }
+    else
+    {
+        AddressError.innerHTML = "Customer Address: " + Address;
+        return true;
+    }
+}
+
+function validateCountry()
+{
+    let Country = document.getElementById("Country").value;
+    let CountryError = document.getElementById("CountryError");
+
+    if(Country == "")
+    {
+        CountryError.innerHTML = "Please Select Your Country";
+        return false;
+    }
+    else
+    {
+        CountryError.innerHTML = "Customer Country: " + Country;
         return true;
     }
 }
@@ -154,19 +192,21 @@ function validateCountry()
 function validateUsername()
 {
     let Username = document.getElementById("username").value.trim();
+    let UsernameError = document.getElementById("UsernameError");
 
     if(Username == "")
     {
-        alert("Please Enter The Username");
+        UsernameError.innerHTML = "Please Enter The Username";
         return false;
     }
     else if(Username.length < 4)
     {
-        alert("Username Must be at least 4 Characters");
+        UsernameError.innerHTML = "Username Must be at least 4 Characters";
         return false;
     }
     else
     {
+        UsernameError.innerHTML = "Customer Username: " + Username;
         return true;
     }
 }
@@ -176,24 +216,30 @@ function validatePassword()
 {
     let Password = document.getElementById("password").value;
     let ConfirmPassword = document.getElementById("confirmPassword").value;
+    let PasswordError = document.getElementById("PasswordError");
+    let ConfirmPasswordError = document.getElementById("ConfirmPasswordError");
 
     if(Password == "")
     {
-        alert("Please Enter The Password");
+        PasswordError.innerHTML = "Please Enter The Password";
         return false;
     }
     else if(Password.length < 6)
     {
-        alert("Password Must be at least 6 Characters");
+        PasswordError.innerHTML = "Password Must be at least 6 Characters";
         return false;
     }
     else if(Password != ConfirmPassword)
     {
-        alert("Password and Confirm Password Do Not Match");
+        PasswordError.innerHTML = "Password and Confirm Password Do Not Match";
+        ConfirmPasswordError.innerHTML = "Password and Confirm Password Do Not Match";
         return false;
     }
     else
     {
+        PasswordError.innerHTML = "Customer Password: " + Password;
+        ConfirmPasswordError.innerHTML = "Customer Confirm Password: " + ConfirmPassword;
         return true;
     }
 }
+
