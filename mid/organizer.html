@@ -1,124 +1,111 @@
-
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Eventora | Organizer Dashboard</title>
     <link rel="stylesheet" href="css/organizer.css">
     <script src="js/organizer.js" defer></script>
-
-    <title>Eventora - Organizer Dashboard</title>
 </head>
-
 <body>
 
     <div class="container">
 
-        <div class="header">
+        <header class="header">
             <h1>Eventora</h1>
             <h2>Organizer Dashboard</h2>
-            <p>Manage your events easily</p>
-        </div>
+            <p>Manage your events easily and efficiently.</p>
+        </header>
 
-        <form id="eventForm">
+        <main>
+            <form id="eventForm">
+                <fieldset>
+                    <legend id="formLegend">Add New Event</legend>
 
-            <fieldset>
-                <legend>Event Information</legend>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="eventName">Event Name</label>
+                            </td>
+                            <td>
+                                <input type="text" id="eventName" name="eventName"
+                                       placeholder="Enter event name">
+                                <div class="error" id="NameError"></div>
+                            </td>
+                        </tr>
 
-                <table>
-                    <tr>
-                        <td>
-                            <label for="eventName">Event Name:</label>
-                        </td>
-                        <td>
-                            <input type="text" name="eventName"
-                                id="eventName"
-                                placeholder="Enter Event Name">
-                            <p id="NameError" class="error"></p>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <label for="eventDate">Event Date</label>
+                            </td>
+                            <td>
+                                <input type="date" id="eventDate" name="eventDate">
+                                <div class="error" id="DateError"></div>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>
-                            <label for="eventDate">Event Date:</label>
-                        </td>
-                        <td>
-                            <input type="date" name="eventDate"
-                                id="eventDate">
-                            <p id="DateError" class="error"></p>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <label for="eventVenue">Venue</label>
+                            </td>
+                            <td>
+                                <input type="text" id="eventVenue" name="eventVenue"
+                                       placeholder="Enter event venue">
+                                <div class="error" id="VenueError"></div>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>
-                            <label for="venue">Venue:</label>
-                        </td>
-                        <td>
-                            <input type="text" name="venue"
-                                id="venue"
-                                placeholder="Enter Event Venue">
-                            <p id="VenueError" class="error"></p>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <label for="eventPrice">Ticket Price (BDT)</label>
+                            </td>
+                            <td>
+                                <input type="number" id="eventPrice" name="eventPrice"
+                                       min="0" placeholder="Enter ticket price">
+                                <div class="error" id="PriceError"></div>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>
-                            <label for="ticketPrice">Ticket Price:</label>
-                        </td>
-                        <td>
-                            <input type="number" name="ticketPrice"
-                                id="ticketPrice"
-                                placeholder="Enter Ticket Price"
-                                min="0.01" step="0.01">
-                            <p id="PriceError" class="error"></p>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <label for="eventCapacity">Event Capacity</label>
+                            </td>
+                            <td>
+                                <input type="number" id="eventCapacity" name="eventCapacity"
+                                       min="1" placeholder="Enter maximum capacity">
+                                <div class="error" id="CapacityError"></div>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>
-                            <label for="capacity">Event Capacity:</label>
-                        </td>
-                        <td>
-                            <input type="number" name="capacity"
-                                id="capacity"
-                                placeholder="Enter Maximum Capacity"
-                                min="1" step="1">
-                            <p id="CapacityError" class="error"></p>
-                        </td>
-                    </tr>
-                </table>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" id="submitBtn" value="Add Event">
+                                <input type="reset" id="resetBtn" value="Reset">
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
 
-            </fieldset>
+            <section class="event-section">
+                <h3>My Events</h3>
 
-            <br>
+                <input type="text" id="searchEvent"
+                       placeholder="Search events by name or venue...">
 
-            <input type="submit" id="submit" value="Add Event">
-            <input type="reset" id="reset" value="Reset">
+                <p id="totalEvents">Total Events: 0</p>
 
-        </form>
+                <div id="eventList">
+                    <p id="emptyMessage">No events added yet.</p>
+                </div>
+            </section>
 
-        <br>
-
-        <div class="event-section">
-
-            <h3>My Events</h3>
-
-            <input type="text" id="searchEvent"
-                placeholder="Search Event by Name">
-
-            <p id="totalEvents">Total Events: 0</p>
-
-            <div id="eventList">
-                <!-- Newly added events will appear here -->
+            <div class="logout-section">
+                <button type="button" id="logoutBtn">Logout</button>
             </div>
+        </main>
 
-        </div>
-
-    </div>
-
-    <div class="footer">
-        <h5>Eventora - Event Management System</h5>
     </div>
 
 </body>
