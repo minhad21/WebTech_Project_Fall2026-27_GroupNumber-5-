@@ -1,63 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Eventora - Staff Dashboard</title>
+
     <link rel="stylesheet" href="css/staff_style.css">
     <script src="js/staff_script.js" defer></script>
-
-    <title>Eventora - Staff Dashboard</title>
 </head>
-<body>
-    
-    <h1>Eventora</h1>
-    <h2>Staff Dashboard</h2>
 
-     
-        <fieldset>
-            
-            <legend>Search and Check Event Tickets :</legend>              
-            <form id="searchForm">
+<body class="staff">
+
+    <div class="header">
+        <h1>Eventora</h1>
+        <h2>Staff Dashboard</h2>
+    </div>
+
+    <div class="topnav">
+        <a href="ticket.html">Ticket Verification</a>
+        <a href="attendees.html">Attendee List</a>
+        <a href="profile.html">My Profile</a>
+       </div>
+
+
+    <div class="welcome">
+        <h2>Welcome, Staff!</h2>
+        <p>Manage event tickets and attendee check-ins.</p>
+    </div>
+
+
+    <fieldset>
+        <legend>Dashboard Overview</legend>
+
+        <table>
+            <tr>
+                <th>Total Tickets</th>
+                <th>Checked In</th>
+                <th>Pending</th>
+            </tr>
+
+            <tr>
+                <td>120</td>
+                <td>85</td>
+                <td>35</td>
+            </tr>
+        </table>
+    </fieldset>
+
+
+    <fieldset>
+        <legend>Search and Check Event Tickets</legend>
+
+        <form id="searchForm">
+
             <label for="bookingRef">Booking Reference:</label>
 
-            <div class="search-row">
-                <input  type="text" id="bookingRef" placeholder="Enter booking ID"  required>
-                <button type="submit">Search</button>
-            </div>
+            <input type="text" id="bookingRef"  placeholder="Enter booking reference">
+            <button type="submit">Search Ticket</button>
+
         </form>
+
+        <p id="message"></p>
+
+        <div id="ticketDetails" hidden>
+
+            <h3>Ticket Information</h3>
+
+            <p><strong>Booking Reference:</strong> <span id="displayRef"></span></p>
+
+            <p><strong>Attendee Name:</strong> <span id="attendeeName"></span></p>
+
+            <p><strong>Event Name:</strong> <span id="eventName"></span></p>
+
+            <p><strong>Ticket Quantity:</strong> <span id="ticketQuantity"></span></p>
+
+            <p><strong>Check-in Status:</strong> <span id="checkInStatus"></span></p>
+
+            <button type="button" id="checkInBtn">Check In</button>
+
+        </div>
+
     </fieldset>
-    <p id="message"></p>
 
-    <div id="ticketDetails" hidden>
-        <h3>Ticket Details</h3>
 
-        <p>
-            <b>Booking ID:</b>
-            <span id="ref"></span>
-        </p>
-
-        <p>
-            <b>Attendee Name:</b>
-            <span id="attendee"></span>
-        </p>
-
-        <p>
-            <b>Event:</b>
-            <span id="eventName"></span>
-        </p>
-
-        <p>
-            <b>Quantity:</b>
-            <span id="quantity"></span>
-        </p>
-
-        <p>
-            <b>Ticket Status:</b>
-            <span id="status"></span>
-        </p>
-
-        <button type="button" id="checkInBtn"> Check In </button>
+    <div class="footer">
+        <p>Eventora - Event Management System</p>
     </div>
 
 </body>
