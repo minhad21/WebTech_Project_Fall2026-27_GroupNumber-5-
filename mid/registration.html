@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/customer_style.css">
-    <script src="js/customer_script.js" defer></script>
+    <link rel="stylesheet" href="css/registration_style.css">
+    <script src="js/registration_script.js" defer></script>
 
-    <title>Eventora - Customer Registration Form</title>
+    <title>Eventora -  Registration Form</title>
 </head>
 
 <body>
@@ -17,18 +17,27 @@
 
         <div class="header">
             <h1>Eventora</h1>
-            <h2>Customer Registration Form</h2>
+            <h2> Registration Form</h2>
         </div>
 
         <form id="registrationForm" onsubmit="return collect_data()">
 
             <fieldset>
-                <legend>Customer Personal Information</legend>
+                <legend> Personal Information</legend>
 
                 <table>
+                    <label for="registerAs">Register As</label>
+
+                    <select id="registerAs" name="registerAs" required>
+                     <option value="">Select Your Role</option>
+                     <option value="customer">Customer</option>
+                     <option value="organizer">Organizer</option>
+                     <option value="staff">Staff</option>
+                   </select>
+                   <p id="RoleError" class="error"></p>
                     <tr>
                         <td>
-                            <label for="customerName">Customer Name:</label>
+                            <label for="customerName"> Name:</label>
                         </td>
                         <td>
                             <input type="text" name="customerName" id="customerName" placeholder="Enter Your Name">
@@ -51,7 +60,7 @@
                             <label for="customerEmail">Email:</label>
                         </td>
                         <td>
-                            <input type="email" name="customerEmail" id="customerEmail" placeholder="Enter Your Email">
+                            <input type="text" name="customerEmail" id="customerEmail" placeholder="Enter Your Email">
                             <p id="EmailError"></p>
                         </td>
                     </tr>
@@ -77,6 +86,7 @@
                         </td>
                         <td>
                             <input type="date" name="DOB" id="DOB">
+                            <p id="DOBError"></p>
                         </td>
                     </tr>
 
@@ -86,6 +96,7 @@
                         </td>
                         <td>
                             <input type="tel" name="Phone" id="Phone" placeholder="Enter Your Phone Number">
+                            <p id="PhoneError"></p>
                         </td>
                     </tr>
 
@@ -95,6 +106,7 @@
                         </td>
                         <td>
                             <textarea id="Address" for="Address"  style="resize: none;"> </textarea>
+                            <p id="AddressError"></p>
                         </td>
                     </tr>
 
@@ -111,6 +123,7 @@
                                 <option value="Australia">Australia</option>
                                 <option value="Japan">Japan</option>
                             </select>
+                            <p id="CountryError"></p>
                         </td>
                     </tr>
                 </table>
@@ -128,6 +141,7 @@
                         </td>
                         <td>
                             <input type="text" name="username" id="username" placeholder="Enter Username">
+                            <p id="UsernameError"></p>
                         </td>
                     </tr>
 
@@ -137,6 +151,7 @@
                         </td>
                         <td>
                             <input type="password" name="password" id="password" placeholder="Enter Password">
+                            <p id="PasswordError"></p>
                         </td>
                     </tr>
 
@@ -146,6 +161,7 @@
                         </td>
                         <td>
                             <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+                            <p id="ConfirmPasswordError"></p>
                         </td>
                     </tr>
                 </table>
@@ -157,6 +173,10 @@
             <input type="reset" id="reset" value="Reset">
 
         </form>
+        <p class="login-link">
+            Already have an account?
+            <a href="login.html">Login Here</a>
+        </p>
 
     </div>
 

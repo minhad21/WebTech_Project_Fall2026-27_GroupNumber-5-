@@ -140,7 +140,15 @@ input[type="radio"] {
 #NameError,
 #AgeError,
 #EmailError,
-#GenderError {
+#GenderError,
+#PhoneError,
+#CountryError,
+#UsernameError,
+#PasswordError,
+#ConfirmPasswordError,
+#DOBError,
+#AddressError
+ {
     color: red;
     font-size: 13px;
     margin-top: 4px;
