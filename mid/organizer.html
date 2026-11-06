@@ -1,112 +1,235 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventora | Organizer Dashboard</title>
+
+    <title>Eventora - Organizer</title>
+
     <link rel="stylesheet" href="css/organizer.css">
-    <script src="js/organizer.js" defer></script>
 </head>
+
 <body>
 
-    <div class="container">
+    <!-- Navigation Bar -->
 
-        <header class="header">
-            <h1>Eventora</h1>
-            <h2>Organizer Dashboard</h2>
-            <p>Manage your events easily and efficiently.</p>
-        </header>
+    <header>
 
-        <main>
-            <form id="eventForm">
-                <fieldset>
-                    <legend id="formLegend">Add New Event</legend>
+        <div class="logo">EVENTORA.</div>
 
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="eventName">Event Name</label>
-                            </td>
-                            <td>
-                                <input type="text" id="eventName" name="eventName"
-                                       placeholder="Enter event name">
-                                <div class="error" id="NameError"></div>
-                            </td>
-                        </tr>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showPage('welcome'); return false;">Welcome</a></li>
+                <li><a href="#" onclick="showPage('registration'); return false;">Registration</a></li>
+                <li><a href="#" onclick="showPage('login'); return false;">Login</a></li>
+                <li><a href="#" onclick="showPage('organize'); return false;">Organize Event</a></li>
+                <li><a href="#" onclick="showPage('my-events'); return false;">My Events</a></li>
+                <li><a href="#" onclick="showPage('booking'); return false;">Booking Requests</a></li>
+            </ul>
+        </nav>
 
-                        <tr>
-                            <td>
-                                <label for="eventDate">Event Date</label>
-                            </td>
-                            <td>
-                                <input type="date" id="eventDate" name="eventDate">
-                                <div class="error" id="DateError"></div>
-                            </td>
-                        </tr>
+    </header>
 
-                        <tr>
-                            <td>
-                                <label for="eventVenue">Venue</label>
-                            </td>
-                            <td>
-                                <input type="text" id="eventVenue" name="eventVenue"
-                                       placeholder="Enter event venue">
-                                <div class="error" id="VenueError"></div>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td>
-                                <label for="eventPrice">Ticket Price (BDT)</label>
-                            </td>
-                            <td>
-                                <input type="number" id="eventPrice" name="eventPrice"
-                                       min="0" placeholder="Enter ticket price">
-                                <div class="error" id="PriceError"></div>
-                            </td>
-                        </tr>
+    <!-- Welcome Page -->
 
-                        <tr>
-                            <td>
-                                <label for="eventCapacity">Event Capacity</label>
-                            </td>
-                            <td>
-                                <input type="number" id="eventCapacity" name="eventCapacity"
-                                       min="1" placeholder="Enter maximum capacity">
-                                <div class="error" id="CapacityError"></div>
-                            </td>
-                        </tr>
+    <section id="welcome" class="page welcome">
 
-                        <tr>
-                            <td></td>
-                            <td>
-                                <input type="submit" id="submitBtn" value="Add Event">
-                                <input type="reset" id="resetBtn" value="Reset">
-                            </td>
-                        </tr>
-                    </table>
-                </fieldset>
-            </form>
+        <p class="welcome-label">WELCOME TO EVENTORA</p>
 
-            <section class="event-section">
-                <h3>My Events</h3>
+        <h1>Welcome, Organizer!</h1>
 
-                <input type="text" id="searchEvent"
-                       placeholder="Search events by name or venue...">
+        <h2>Plan. Organize. Celebrate.</h2>
 
-                <p id="totalEvents">Total Events: 0</p>
+        <p>
+            Manage your events and create unforgettable experiences
+            with Eventora.
+        </p>
 
-                <div id="eventList">
-                    <p id="emptyMessage">No events added yet.</p>
-                </div>
-            </section>
+        <button onclick="showPage('registration')">
+            Get Started
+        </button>
 
-            <div class="logout-section">
-                <button type="button" id="logoutBtn">Logout</button>
-            </div>
-        </main>
+    </section>
 
-    </div>
+
+    <!-- Registration Page -->
+
+    <section id="registration" class="page container">
+
+        <h2>Organizer Registration</h2>
+
+        <p class="subtitle">
+            Create your organizer account
+        </p>
+
+        <form id="registrationForm">
+
+            <label>Organization Name</label>
+            <input type="text" data-label="Organization Name"
+                   placeholder="Enter organization name">
+
+            <label>Owner Name</label>
+            <input type="text" data-label="Owner Name"
+                   placeholder="Enter owner name">
+
+            <label>Email Address</label>
+            <input type="email" data-label="Email"
+                   placeholder="Enter email address">
+
+            <label>Phone Number</label>
+            <input type="tel" data-label="Phone Number"
+                   placeholder="Enter phone number">
+
+            <label>Organizer ID</label>
+            <input type="text" data-label="Organizer ID"
+                   placeholder="Create organizer ID">
+
+            <label>Password</label>
+            <input type="password" data-label="Password"
+                   placeholder="Create password">
+
+            <label>Confirm Password</label>
+            <input type="password" data-label="Confirm Password"
+                   placeholder="Confirm password">
+
+            <button type="submit">Register</button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Login Page -->
+
+    <section id="login" class="page container">
+
+        <h2>Organizer Login</h2>
+
+        <p class="subtitle">
+            Login to your organizer account
+        </p>
+
+        <form id="loginForm">
+
+            <label>Organizer ID</label>
+            <input type="text" data-label="Organizer ID"
+                   placeholder="Enter organizer ID">
+
+            <label>Password</label>
+            <input type="password" data-label="Password"
+                   placeholder="Enter password">
+
+            <button type="submit">Login</button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Organize Event Page -->
+
+    <section id="organize" class="page container">
+
+        <h2>Organize an Event</h2>
+
+        <p class="subtitle">
+            Provide your event details
+        </p>
+
+        <form id="eventForm">
+
+            <label>Event Name</label>
+            <input type="text" data-label="Event Name"
+                   placeholder="Enter event name">
+
+            <label>Event Type</label>
+            <select data-label="Event Type">
+                <option value="">Select event type</option>
+                <option value="Conference">Conference</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Concert">Concert</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label>Event Date</label>
+            <input type="date" data-label="Event Date">
+
+            <label>Event Time</label>
+            <input type="time" data-label="Event Time">
+
+            <label>Event Venue</label>
+            <input type="text" data-label="Event Venue"
+                   placeholder="Enter event location">
+
+            <label>Number of Guests</label>
+            <input type="number" data-label="Number of Guests"
+                   placeholder="Enter expected guests">
+
+            <label>Event Description</label>
+            <textarea data-label="Event Description"
+                      placeholder="Describe your event"></textarea>
+
+            <button type="submit">Submit Event</button>
+
+        </form>
+
+    </section>
+
+
+    <!-- My Events Page -->
+
+    <section id="my-events" class="page container">
+
+        <h2>My Events</h2>
+
+        <p class="subtitle">
+            View and manage your organized events
+        </p>
+
+        <div id="eventList">
+            <p>No events available yet.</p>
+        </div>
+
+    </section>
+
+
+    <!-- Booking Requests Page -->
+
+    <section id="booking" class="page container">
+
+        <h2>Booking Requests</h2>
+
+        <p class="subtitle">
+            Manage customer booking requests
+        </p>
+
+        <div id="bookingList">
+            <p>No booking requests available yet.</p>
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <h3>EVENTORA.</h3>
+
+        <p>Plan. Organize. Celebrate.</p>
+
+        <p>&copy; 2026 Eventora. All Rights Reserved.</p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/Organizer.js"></script>
 
 </body>
 </html>

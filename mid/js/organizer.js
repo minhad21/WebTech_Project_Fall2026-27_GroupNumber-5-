@@ -1,237 +1,137 @@
-let events = [];
-let editIndex = -1;
 
-const eventForm = document.querySelector("#eventForm");
-const eventName = document.querySelector("#eventName");
-const eventDate = document.querySelector("#eventDate");
-const eventVenue = document.querySelector("#eventVenue");
-const eventPrice = document.querySelector("#eventPrice");
-const eventCapacity = document.querySelector("#eventCapacity");
+/* Page Navigation */
 
-const eventList = document.querySelector("#eventList");
-const searchEvent = document.querySelector("#searchEvent");
-const totalEvents = document.querySelector("#totalEvents");
-const emptyMessage = document.querySelector("#emptyMessage");
-const submitBtn = document.querySelector("#submitBtn");
-const formLegend = document.querySelector("#formLegend");
-const logoutBtn = document.querySelector("#logoutBtn");
+function showPage(pageId) {
 
-function clearErrors() {
-    document.querySelector("#NameError").textContent = "";
-    document.querySelector("#DateError").textContent = "";
-    document.querySelector("#VenueError").textContent = "";
-    document.querySelector("#PriceError").textContent = "";
-    document.querySelector("#CapacityError").textContent = "";
+    let pages = document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    let selectedPage = document.getElementById(pageId);
+
+    if (selectedPage) {
+        selectedPage.classList.add("active");
+    }
+
 }
 
-function validateForm() {
-    clearErrors();
 
-    let valid = true;
+/* Default Page */
 
-    if (eventName.value.trim() === "") {
-        document.querySelector("#NameError").textContent =
-            "Please enter the event name.";
-        valid = false;
-    }
+showPage("welcome");
 
-    if (eventDate.value === "") {
-        document.querySelector("#DateError").textContent =
-            "Please select an event date.";
-        valid = false;
-    } else if (eventDate.value < new Date().toISOString().split("T")[0]) {
-        document.querySelector("#DateError").textContent =
-            "Event date cannot be in the past.";
-        valid = false;
-    }
 
-    if (eventVenue.value.trim() === "") {
-        document.querySelector("#VenueError").textContent =
-            "Please enter the event venue.";
-        valid = false;
-    }
+/* Form Validation Function */
 
-    if (eventPrice.value === "" || Number(eventPrice.value) < 0) {
-        document.querySelector("#PriceError").textContent =
-            "Please enter a valid ticket price.";
-        valid = false;
-    }
+function validateForm(form) {
 
-    if (
-        eventCapacity.value === "" ||
-        Number(eventCapacity.value) < 1 ||
-        !Number.isInteger(Number(eventCapacity.value))
-    ) {
-        document.querySelector("#CapacityError").textContent =
-            "Capacity must be a positive whole number.";
-        valid = false;
-    }
+    let inputs = form.querySelectorAll("input, select, textarea");
+    let isValid = true;
 
-    return valid;
+    inputs.forEach(function(input) {
+
+        // Remove previous error message
+        let oldError = input.nextElementSibling;
+
+        if (oldError && oldError.classList.contains("error-message")) {
+            oldError.remove();
+        }
+
+        // Check empty fields
+        if (input.value.trim() === "") {
+
+            let error = document.createElement("small");
+
+            error.className = "error-message";
+            error.textContent = input.dataset.label + " is required.";
+
+            input.insertAdjacentElement("afterend", error);
+
+            isValid = false;
+        }
+
+    });
+
+    return isValid;
 }
 
-function resetForm() {
-    eventForm.reset();
-    clearErrors();
 
-    editIndex = -1;
-    submitBtn.value = "Add Event";
-    formLegend.textContent = "Add New Event";
-}
+/* Registration Form */
 
-eventForm.addEventListener("submit", function (event) {
+let registrationForm = document.querySelector("#registrationForm");
+
+registrationForm.addEventListener("submit", function(event) {
+
     event.preventDefault();
 
-    if (!validateForm()) {
+    if (!validateForm(registrationForm)) {
         return;
     }
 
-    let eventData = {
-        name: eventName.value.trim(),
-        date: eventDate.value,
-        venue: eventVenue.value.trim(),
-        price: Number(eventPrice.value),
-        capacity: Number(eventCapacity.value)
-    };
+    let inputs = registrationForm.querySelectorAll("input");
 
-    if (editIndex === -1) {
-        events.push(eventData);
-    } else {
-        events[editIndex] = eventData;
-    }
+    let password = inputs[5].value;
+    let confirmPassword = inputs[6].value;
 
-    resetForm();
-    displayEvents();
-});
-
-function displayEvents() {
-    eventList.innerHTML = "";
-
-    let searchText = searchEvent.value.trim().toLowerCase();
-
-    let filteredEvents = events.filter(function (event) {
-        return (
-            event.name.toLowerCase().includes(searchText) ||
-            event.venue.toLowerCase().includes(searchText)
-        );
-    });
-
-    totalEvents.textContent = "Total Events: " + events.length;
-
-    if (filteredEvents.length === 0) {
-        let message = document.createElement("p");
-
-        if (events.length === 0) {
-            message.textContent = "No events added yet.";
-        } else {
-            message.textContent = "No matching events found.";
-        }
-
-        eventList.appendChild(message);
+    if (!inputs[2].value.includes("@")) {
+        alert("Please enter a valid email address.");
         return;
     }
 
-    filteredEvents.forEach(function (event) {
-        let originalIndex = events.indexOf(event);
-
-        let card = document.createElement("div");
-        card.className = "event-card";
-
-        let title = document.createElement("h4");
-        title.textContent = event.name;
-
-        let date = document.createElement("p");
-        date.textContent = "Date: " + event.date;
-
-        let venue = document.createElement("p");
-        venue.textContent = "Venue: " + event.venue;
-
-        let price = document.createElement("p");
-        price.textContent = "Ticket Price: BDT " + event.price;
-
-        let capacity = document.createElement("p");
-        capacity.textContent = "Capacity: " + event.capacity + " people";
-
-        let editButton = document.createElement("button");
-        editButton.textContent = "Edit";
-        editButton.className = "edit-btn";
-        editButton.type = "button";
-
-        editButton.addEventListener("click", function () {
-            editEvent(originalIndex);
-        });
-
-        let deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.className = "delete-btn";
-        deleteButton.type = "button";
-
-        deleteButton.addEventListener("click", function () {
-            deleteEvent(originalIndex);
-        });
-
-        card.appendChild(title);
-        card.appendChild(date);
-        card.appendChild(venue);
-        card.appendChild(price);
-        card.appendChild(capacity);
-        card.appendChild(editButton);
-        card.appendChild(deleteButton);
-
-        eventList.appendChild(card);
-    });
-}
-
-function editEvent(index) {
-    let event = events[index];
-
-    eventName.value = event.name;
-    eventDate.value = event.date;
-    eventVenue.value = event.venue;
-    eventPrice.value = event.price;
-    eventCapacity.value = event.capacity;
-
-    editIndex = index;
-
-    submitBtn.value = "Update Event";
-    formLegend.textContent = "Edit Event";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-function deleteEvent(index) {
-    let confirmDelete = confirm("Are you sure you want to delete this event?");
-
-    if (confirmDelete) {
-        events.splice(index, 1);
-
-        if (editIndex === index) {
-            resetForm();
-        }
-
-        displayEvents();
+    if (password.length < 6) {
+        alert("Password must contain at least 6 characters.");
+        return;
     }
-}
 
-searchEvent.addEventListener("input", function () {
-    displayEvents();
-});
-
-eventForm.addEventListener("reset", function () {
-    setTimeout(function () {
-        resetForm();
-    }, 0);
-});
-
-logoutBtn.addEventListener("click", function () {
-    let confirmLogout = confirm("Are you sure you want to logout?");
-
-    if (confirmLogout) {
-        window.location.href = "login.html";
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
     }
+
+    alert("Registration submitted successfully!");
+
+    registrationForm.reset();
+
+    showPage("login");
+
 });
 
-displayEvents();
+
+/* Login Form */
+
+let loginForm = document.querySelector("#loginForm");
+
+loginForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    if (!validateForm(loginForm)) {
+        return;
+    }
+
+    alert("Login functionality will be connected next.");
+
+});
+
+
+/* Event Form */
+
+let eventForm = document.querySelector("#eventForm");
+
+eventForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    if (!validateForm(eventForm)) {
+        return;
+    }
+
+    alert("Event submitted successfully!");
+
+    eventForm.reset();
+
+    showPage("my-events");
+
+});
