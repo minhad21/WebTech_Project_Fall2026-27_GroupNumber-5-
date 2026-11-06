@@ -1,10 +1,10 @@
 
-/* Google Fonts */
+/* GOOGLE FONTS */
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap');
 
 
-/* Color Palette */
+/* COLOR PALETTE */
 
 :root {
     --primary: #252525;
@@ -16,7 +16,7 @@
 }
 
 
-/* General Styling */
+/* GENERAL STYLING */
 
 * {
     margin: 0;
@@ -32,9 +32,9 @@ body {
 }
 
 
-/* Navigation Bar */
+/* NAVIGATION BAR */
 
-header {
+.navbar {
     background-color: var(--primary);
     padding: 20px 4%;
     display: flex;
@@ -70,7 +70,7 @@ nav ul li a:hover {
 }
 
 
-/* Page Navigation */
+/* PAGE NAVIGATION */
 
 .page {
     display: none !important;
@@ -81,7 +81,7 @@ nav ul li a:hover {
 }
 
 
-/* Welcome Page */
+/* WELCOME PAGE */
 
 .welcome {
     min-height: 85vh;
@@ -130,7 +130,7 @@ nav ul li a:hover {
 }
 
 
-/* Main Container */
+/* MAIN CONTAINER */
 
 .container {
     max-width: 750px;
@@ -157,7 +157,7 @@ nav ul li a:hover {
 }
 
 
-/* Forms */
+/* FORMS */
 
 form {
     display: flex;
@@ -199,7 +199,7 @@ textarea {
 }
 
 
-/* Required Field Error Messages */
+/* REQUIRED FIELD ERROR MESSAGES */
 
 .error-message {
     display: block;
@@ -210,7 +210,7 @@ textarea {
 }
 
 
-/* Buttons */
+/* BUTTONS */
 
 button {
     background-color: var(--secondary);
@@ -231,7 +231,27 @@ button:hover {
 }
 
 
-/* Event and Booking Lists */
+/* CREATE ACCOUNT LINK */
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.register-link a {
+    color: #9A7040;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* EVENT AND BOOKING LISTS */
 
 #eventList,
 #bookingList {
@@ -243,7 +263,7 @@ button:hover {
 }
 
 
-/* Footer */
+/* FOOTER */
 
 footer {
     background-color: var(--primary);
@@ -266,11 +286,11 @@ footer p {
 }
 
 
-/* Responsive Design */
+/* RESPONSIVE DESIGN */
 
 @media (max-width: 900px) {
 
-    header {
+    .navbar {
         flex-direction: column;
         gap: 18px;
     }
