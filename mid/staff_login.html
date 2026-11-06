@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Eventora</title>
-    <link rel="stylesheet" href="css/login_style.css">
+    <link rel="stylesheet" href="css/staff_login.css">
+    <script src="js/staff_login.js" defer></script>
 </head>
 
 <body>
-
-    <!-- Header -->
+    <form id="loginForm" onsubmit="return staffLoginUser()">
+        <!-- Header -->
     <header>
         <div class="logo">
             <h2>Eventora</h2>
@@ -18,7 +19,6 @@
 
         <nav>
             <a href="index.html">Home</a>
-            <a href="registration.html">Register</a>
         </nav>
     </header>
 
@@ -35,32 +35,15 @@
 
                 <div class="form-group">
                     <label for="username">Username or Email</label>
-                    <input type="text" id="username"
-                           placeholder="Enter your username or email">
+                    <input type="text" id="username" placeholder="Enter your username or email">
                     <p class="error" id="usernameError"></p>
                 </div>
 
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password"
-                           placeholder="Enter your password">
+                    <input type="password" id="password" placeholder="Enter your password">
                     <p class="error" id="passwordError"></p>
-                </div>
-
-
-                <div class="form-group">
-                    <label for="role">Login As</label>
-
-                    <select id="role">
-                        <option value="">Select Your Role</option>
-                        <option value="customer">Customer</option>
-                        <option value="organizer">Organizer</option>
-                        <option value="staff">Staff</option>
-                        <option value="admin">Admin</option>
-                    </select>
-
-                    <p class="error" id="roleError"></p>
                 </div>
 
 
@@ -70,7 +53,7 @@
 
                 <p class="register-link">
                     Don't have an account?
-                    <a href="registration.html">Register Now</a>
+                    <a href="staff_registration.html">Register Now</a>
                 </p>
 
             </form>
@@ -88,7 +71,9 @@
     </footer>
 
 
-    <script src="js/login_script.js"></script>
+    <script src="js/staff_login.js"></script>
+
+    </form>
 
 </body>
 </html>
