@@ -13,8 +13,7 @@ function staffLoginUser()
     // Username validation
     if(username === "")
     {
-        document.getElementById("usernameError").innerHTML =
-        "Please enter your username or email";
+        document.getElementById("usernameError").innerHTML = "Please enter your username or email";
 
         valid = false;
     }
@@ -22,8 +21,7 @@ function staffLoginUser()
     // Password validation
     if(password === "")
     {
-        document.getElementById("passwordError").innerHTML =
-        "Please enter your password";
+        document.getElementById("passwordError").innerHTML = "Please enter your password";
 
         valid = false;
     }
@@ -45,23 +43,35 @@ function staffLoginUser()
         {
             found = true;
 
-            if(users[i].password === password)
+            if(users[i].password === password && users[i].role === "Staff")
             {
-                alert("User found!");
+                // Save current logged-in user
+                localStorage.setItem("currentUser", JSON.stringify(users[i]));
+
+                alert("Login successful!");
+
+                window.location.href = "staff.html";
+            }
+            else if(users[i].password !== password)
+            {
+                document.getElementById("passwordError").innerHTML =
+                "Incorrect password";
             }
             else
             {
-                document.getElementById("passwordError").innerHTML = "Incorrect password";
+                document.getElementById("usernameError").innerHTML =
+                "This account is not a Staff account";
             }
 
-            break;
+            return false;
         }
     }
 
     // Username/email not found
     if(found === false)
     {
-        document.getElementById("usernameError").innerHTML = "Username or Email not found!";
+        document.getElementById("usernameError").innerHTML =
+        "Username or Email not found!";
     }
 
     return false;
