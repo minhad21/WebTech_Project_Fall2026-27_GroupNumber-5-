@@ -1,7 +1,7 @@
 let tickets = [
     {
         bookingRef: "EVT1001",
-        customerName: "Purnima Barua",
+        customerName: "Sanjida Simi",
         eventName: "Tech Innovation Summit",
         ticketQuantity: 2,
         checkInStatus: "Pending"
@@ -9,7 +9,7 @@ let tickets = [
 
     {
         bookingRef: "EVT1002",
-        customerName: "Rifat Jahan Laboni",
+        customerName: "Ayushi Barua",
         eventName: "Live Music Festival",
         ticketQuantity: 1,
         checkInStatus: "Checked In"
@@ -25,23 +25,28 @@ let tickets = [
 ];
 
 
-document.getElementById("searchForm").addEventListener("submit", function(event) {
+document.getElementById("searchForm").addEventListener("submit", function(event) 
+{
 
     event.preventDefault();
 
     let bookingRef = document.getElementById("bookingRef").value.trim();
-
     let message = document.getElementById("message");
-
     let ticketDetails = document.getElementById("ticketDetails");
-
     let foundTicket = null;
 
-    for (let i = 0; i < tickets.length; i++) {
+    for (let i = 0; i < tickets.length; i++) 
+    {
 
-        if (tickets[i].bookingRef === bookingRef) {
+        if (tickets[i].bookingRef === bookingRef) 
+        {
+            foundTicket = tickets[i];
+            break;
+        }
+    }
 
-    if (foundTicket !== null) {
+    if (foundTicket !== null) 
+    {
 
         message.innerHTML = "Ticket found successfully!";
 
@@ -55,25 +60,24 @@ document.getElementById("searchForm").addEventListener("submit", function(event)
         
         let checkInBtn = document.getElementById("checkInBtn");
 
-        if (foundTicket.checkInStatus === "Checked In") {
+        if (foundTicket.checkInStatus === "Checked In") 
+        {
             checkInBtn.disabled = true;
             checkInBtn.innerHTML = "Already Checked In";
         }
-        else {
+        else 
+        {
             checkInBtn.disabled = false;
             checkInBtn.innerHTML = "Check In";
         }
 
-        checkInBtn.onclick = function() {
+        checkInBtn.onclick = function() 
+        {
 
             foundTicket.checkInStatus = "Checked In";
-
             document.getElementById("checkInStatus").innerHTML = "Checked In";
-
             message.innerHTML = "Customer checked in successfully!";
-
             checkInBtn.disabled = true;
-
             checkInBtn.innerHTML = "Already Checked In";
         };
 
@@ -86,4 +90,10 @@ document.getElementById("searchForm").addEventListener("submit", function(event)
         ticketDetails.hidden = true;
     }
 
+
 });
+
+function logout()
+{
+    window.location.href = "staff_login.html";
+}

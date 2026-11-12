@@ -1,4 +1,5 @@
-
+let usernames = ["Purnima Barua", "Jeson Brein", "Eren Yeager"];
+let passwords = ["Purnima@123", "Jeson@123", "Eren@123"];
 function staffLoginUser()
 {
     let username = document.getElementById("username").value.trim();
@@ -31,48 +32,32 @@ function staffLoginUser()
         return false;
     }
 
-    // Get registered users
-    let users = JSON.parse(localStorage.getItem("eventoraUsers")) || [];
-
-    let found = false;
-
-    // Check username/email and password
-    for(let i = 0; i < users.length; i++)
+    for(let i = 0; i < username.length; i++)
     {
-        if(users[i].username === username || users[i].email === username)
+        if(usernames[i] === username)
         {
             found = true;
 
-            if(users[i].password === password && users[i].role === "Staff")
+            if(passwords[i] === password)
             {
-                // Save current logged-in user
-                localStorage.setItem("currentUser", JSON.stringify(users[i]));
-
                 alert("Login successful!");
-
                 window.location.href = "staff.html";
-            }
-            else if(users[i].password !== password)
-            {
-                document.getElementById("passwordError").innerHTML =
-                "Incorrect password";
             }
             else
             {
-                document.getElementById("usernameError").innerHTML =
-                "This account is not a Staff account";
+                document.getElementById("passwordError").innerHTML = "Incorrect password";
             }
-
             return false;
         }
     }
 
-    // Username/email not found
     if(found === false)
     {
-        document.getElementById("usernameError").innerHTML =
-        "Username or Email not found!";
+        document.getElementById("usernameError").innerHTML = "Username not found!";
     }
 
     return false;
 }
+
+    
+
