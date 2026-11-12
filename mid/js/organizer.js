@@ -1,237 +1,353 @@
-let events = [];
-let editIndex = -1;
 
-const eventForm = document.querySelector("#eventForm");
-const eventName = document.querySelector("#eventName");
-const eventDate = document.querySelector("#eventDate");
-const eventVenue = document.querySelector("#eventVenue");
-const eventPrice = document.querySelector("#eventPrice");
-const eventCapacity = document.querySelector("#eventCapacity");
+/* PAGE NAVIGATION */
 
-const eventList = document.querySelector("#eventList");
-const searchEvent = document.querySelector("#searchEvent");
-const totalEvents = document.querySelector("#totalEvents");
-const emptyMessage = document.querySelector("#emptyMessage");
-const submitBtn = document.querySelector("#submitBtn");
-const formLegend = document.querySelector("#formLegend");
-const logoutBtn = document.querySelector("#logoutBtn");
+let isLoggedIn = false;
 
-function clearErrors() {
-    document.querySelector("#NameError").textContent = "";
-    document.querySelector("#DateError").textContent = "";
-    document.querySelector("#VenueError").textContent = "";
-    document.querySelector("#PriceError").textContent = "";
-    document.querySelector("#CapacityError").textContent = "";
+function showPage(pageId) {
+
+    // Protect organizer pages
+
+    let protectedPages = [
+        "organize",
+        "my-events",
+        "booking"
+    ];
+
+    if (protectedPages.includes(pageId) && !isLoggedIn) {
+        pageId = "login";
+    }
+
+    // Hide all pages
+
+    let pages = document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    // Show selected page
+
+    let selectedPage = document.getElementById(pageId);
+
+    if (selectedPage) {
+        selectedPage.classList.add("active");
+    }
+
+    // Change navigation bar
+
+    let publicNavbar = document.querySelector("#publicNavbar");
+    let organizerNavbar = document.querySelector("#organizerNavbar");
+
+    if (isLoggedIn) {
+        publicNavbar.style.display = "none";
+        organizerNavbar.style.display = "flex";
+    } else {
+        publicNavbar.style.display = "flex";
+        organizerNavbar.style.display = "none";
+    }
+
 }
 
-function validateForm() {
-    clearErrors();
 
-    let valid = true;
+/* DEFAULT PAGE */
 
-    if (eventName.value.trim() === "") {
-        document.querySelector("#NameError").textContent =
-            "Please enter the event name.";
-        valid = false;
-    }
+showPage("welcome");
 
-    if (eventDate.value === "") {
-        document.querySelector("#DateError").textContent =
-            "Please select an event date.";
-        valid = false;
-    } else if (eventDate.value < new Date().toISOString().split("T")[0]) {
-        document.querySelector("#DateError").textContent =
-            "Event date cannot be in the past.";
-        valid = false;
-    }
 
-    if (eventVenue.value.trim() === "") {
-        document.querySelector("#VenueError").textContent =
-            "Please enter the event venue.";
-        valid = false;
-    }
+/* FORM VALIDATION FUNCTION */
 
-    if (eventPrice.value === "" || Number(eventPrice.value) < 0) {
-        document.querySelector("#PriceError").textContent =
-            "Please enter a valid ticket price.";
-        valid = false;
-    }
+function validateForm(form) {
 
-    if (
-        eventCapacity.value === "" ||
-        Number(eventCapacity.value) < 1 ||
-        !Number.isInteger(Number(eventCapacity.value))
-    ) {
-        document.querySelector("#CapacityError").textContent =
-            "Capacity must be a positive whole number.";
-        valid = false;
-    }
+    let inputs = form.querySelectorAll("input, select, textarea");
 
-    return valid;
+    let isValid = true;
+
+    inputs.forEach(function(input) {
+
+        // Remove previous error message
+
+        let oldError = input.nextElementSibling;
+
+        if (oldError && oldError.classList.contains("error-message")) {
+            oldError.remove();
+        }
+
+        // Check empty fields
+
+        if (input.value.trim() === "") {
+
+            showError(input, input.dataset.label + " is required.");
+
+            isValid = false;
+        }
+
+    });
+
+    return isValid;
+
 }
 
-function resetForm() {
-    eventForm.reset();
-    clearErrors();
 
-    editIndex = -1;
-    submitBtn.value = "Add Event";
-    formLegend.textContent = "Add New Event";
+/* SHOW ERROR MESSAGE */
+
+function showError(input, message) {
+
+    let error = document.createElement("small");
+
+    error.className = "error-message";
+    error.textContent = message;
+
+    input.insertAdjacentElement("afterend", error);
+
 }
 
-eventForm.addEventListener("submit", function (event) {
+
+/* REGISTRATION FORM */
+
+let registrationForm = document.querySelector("#registrationForm");
+
+registrationForm.addEventListener("submit", function(event) {
+
     event.preventDefault();
 
-    if (!validateForm()) {
+    if (!validateForm(registrationForm)) {
         return;
     }
 
-    let eventData = {
-        name: eventName.value.trim(),
-        date: eventDate.value,
-        venue: eventVenue.value.trim(),
-        price: Number(eventPrice.value),
-        capacity: Number(eventCapacity.value)
+    let organizationName = document.querySelector("#organizationName").value.trim();
+
+    let ownerName = document.querySelector("#ownerName").value.trim();
+
+    let email = document.querySelector("#email").value.trim();
+
+    let phone = document.querySelector("#phone").value.trim();
+
+    let organizerID = document.querySelector("#organizerID").value.trim();
+
+    let password = document.querySelector("#password").value;
+
+    let confirmPassword = document.querySelector("#confirmPassword").value;
+
+
+    // Email validation
+
+    if (!email.includes("@") || !email.includes(".")) {
+
+        showError(
+            document.querySelector("#email"),
+            "Please enter a valid email address."
+        );
+
+        return;
+    }
+
+
+    // Password validation
+
+    if (password.length < 6) {
+
+        showError(
+            document.querySelector("#password"),
+            "Password must contain at least 6 characters."
+        );
+
+        return;
+    }
+
+
+    // Confirm password validation
+
+    if (password !== confirmPassword) {
+
+        showError(
+            document.querySelector("#confirmPassword"),
+            "Passwords do not match."
+        );
+
+        return;
+    }
+
+
+    // Check existing organizer ID
+
+    let existingAccount = localStorage.getItem("organizerAccount");
+
+    if (existingAccount) {
+
+        let account = JSON.parse(existingAccount);
+
+        if (account.organizerID === organizerID) {
+
+            showError(
+                document.querySelector("#organizerID"),
+                "This Organizer ID is already registered."
+            );
+
+            return;
+        }
+    }
+
+
+    // Save registration information
+
+    let organizerAccount = {
+
+        organizationName: organizationName,
+        ownerName: ownerName,
+        email: email,
+        phone: phone,
+        organizerID: organizerID,
+        password: password
+
     };
 
-    if (editIndex === -1) {
-        events.push(eventData);
-    } else {
-        events[editIndex] = eventData;
-    }
+    localStorage.setItem(
+        "organizerAccount",
+        JSON.stringify(organizerAccount)
+    );
 
-    resetForm();
-    displayEvents();
+
+    alert("Registration successful! Please login.");
+
+    registrationForm.reset();
+
+    showPage("login");
+
 });
 
-function displayEvents() {
-    eventList.innerHTML = "";
 
-    let searchText = searchEvent.value.trim().toLowerCase();
+/* LOGIN FORM */
 
-    let filteredEvents = events.filter(function (event) {
-        return (
-            event.name.toLowerCase().includes(searchText) ||
-            event.venue.toLowerCase().includes(searchText)
-        );
-    });
+let loginForm = document.querySelector("#loginForm");
 
-    totalEvents.textContent = "Total Events: " + events.length;
+loginForm.addEventListener("submit", function(event) {
 
-    if (filteredEvents.length === 0) {
-        let message = document.createElement("p");
+    event.preventDefault();
 
-        if (events.length === 0) {
-            message.textContent = "No events added yet.";
-        } else {
-            message.textContent = "No matching events found.";
-        }
-
-        eventList.appendChild(message);
+    if (!validateForm(loginForm)) {
         return;
     }
 
-    filteredEvents.forEach(function (event) {
-        let originalIndex = events.indexOf(event);
+    let loginID = document.querySelector("#loginID").value.trim();
 
-        let card = document.createElement("div");
-        card.className = "event-card";
+    let loginPassword = document.querySelector("#loginPassword").value;
 
-        let title = document.createElement("h4");
-        title.textContent = event.name;
 
-        let date = document.createElement("p");
-        date.textContent = "Date: " + event.date;
+    // Get registered account
 
-        let venue = document.createElement("p");
-        venue.textContent = "Venue: " + event.venue;
+    let savedAccount = localStorage.getItem("organizerAccount");
 
-        let price = document.createElement("p");
-        price.textContent = "Ticket Price: BDT " + event.price;
+    if (!savedAccount) {
 
-        let capacity = document.createElement("p");
-        capacity.textContent = "Capacity: " + event.capacity + " people";
+        alert("No account found. Please create an account first.");
 
-        let editButton = document.createElement("button");
-        editButton.textContent = "Edit";
-        editButton.className = "edit-btn";
-        editButton.type = "button";
-
-        editButton.addEventListener("click", function () {
-            editEvent(originalIndex);
-        });
-
-        let deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.className = "delete-btn";
-        deleteButton.type = "button";
-
-        deleteButton.addEventListener("click", function () {
-            deleteEvent(originalIndex);
-        });
-
-        card.appendChild(title);
-        card.appendChild(date);
-        card.appendChild(venue);
-        card.appendChild(price);
-        card.appendChild(capacity);
-        card.appendChild(editButton);
-        card.appendChild(deleteButton);
-
-        eventList.appendChild(card);
-    });
-}
-
-function editEvent(index) {
-    let event = events[index];
-
-    eventName.value = event.name;
-    eventDate.value = event.date;
-    eventVenue.value = event.venue;
-    eventPrice.value = event.price;
-    eventCapacity.value = event.capacity;
-
-    editIndex = index;
-
-    submitBtn.value = "Update Event";
-    formLegend.textContent = "Edit Event";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-function deleteEvent(index) {
-    let confirmDelete = confirm("Are you sure you want to delete this event?");
-
-    if (confirmDelete) {
-        events.splice(index, 1);
-
-        if (editIndex === index) {
-            resetForm();
-        }
-
-        displayEvents();
+        return;
     }
-}
 
-searchEvent.addEventListener("input", function () {
-    displayEvents();
-});
+    let account = JSON.parse(savedAccount);
 
-eventForm.addEventListener("reset", function () {
-    setTimeout(function () {
-        resetForm();
-    }, 0);
-});
 
-logoutBtn.addEventListener("click", function () {
-    let confirmLogout = confirm("Are you sure you want to logout?");
+    // Check login information
 
-    if (confirmLogout) {
-        window.location.href = "login.html";
+    if (
+        loginID === account.organizerID &&
+        loginPassword === account.password
+    ) {
+
+        alert("Login successful! Welcome to Eventora.");
+
+        isLoggedIn = true;
+
+        loginForm.reset();
+
+        showPage("organize");
+
+    } else {
+
+        alert("Incorrect Organizer ID or Password. Please try again.");
+
     }
+
 });
 
-displayEvents();
+
+/* EVENT FORM */
+
+let eventForm = document.querySelector("#eventForm");
+
+eventForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    if (!validateForm(eventForm)) {
+        return;
+    }
+
+    let eventInputs = eventForm.querySelectorAll(
+        "input, select, textarea"
+    );
+
+    let eventName = eventInputs[0].value.trim();
+    let eventType = eventInputs[1].value;
+    let eventDate = eventInputs[2].value;
+    let eventTime = eventInputs[3].value;
+    let eventVenue = eventInputs[4].value.trim();
+    let guestNumber = eventInputs[5].value;
+    let eventDescription = eventInputs[6].value.trim();
+
+
+    // Add event to My Events
+
+    let eventList = document.querySelector("#eventList");
+
+    let eventCard = document.createElement("div");
+
+    eventCard.className = "event-card";
+
+    let heading = document.createElement("h3");
+    heading.textContent = eventName;
+
+    let details = document.createElement("p");
+
+    details.textContent =
+        "Type: " + eventType +
+        " | Date: " + eventDate +
+        " | Time: " + eventTime +
+        " | Venue: " + eventVenue +
+        " | Guests: " + guestNumber;
+
+    let description = document.createElement("p");
+
+    description.textContent = eventDescription;
+
+    eventCard.appendChild(heading);
+    eventCard.appendChild(details);
+    eventCard.appendChild(description);
+
+    if (eventList.querySelector("p")) {
+        eventList.innerHTML = "";
+    }
+
+    eventList.appendChild(eventCard);
+
+
+    alert("Event submitted successfully!");
+
+    eventForm.reset();
+
+    showPage("my-events");
+
+});
+
+
+/* LOGOUT */
+
+function logout() {
+
+    isLoggedIn = false;
+
+    alert("You have logged out successfully.");
+
+    showPage("welcome");
+
+}
