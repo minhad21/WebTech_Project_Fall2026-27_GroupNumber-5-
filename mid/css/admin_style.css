@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #c8a27c;
     color: #333333;
     line-height: 1.6;
 }
@@ -62,6 +62,56 @@ legend {
     padding: 0 10px;
 }
 
+/* Section Colors (one color for each main section) */
+/* 1st section: Admin Registration form (magenta) */
+.container > fieldset:nth-of-type(1) {
+    background-color: #fdf0fa;
+    border-color: #d63ab0;
+}
+
+.container > fieldset:nth-of-type(1) legend {
+    color: #c2188f;
+}
+
+/* small boxes inside the registration form stay white */
+.container > fieldset:nth-of-type(1) fieldset {
+    background-color: #ffffff;
+    border-color: #e9a6d6;
+}
+
+.container > fieldset:nth-of-type(1) input[type="submit"] {
+    background-color: #c2188f;
+}
+
+.container > fieldset:nth-of-type(1) input[type="submit"]:hover {
+    background-color: #9c1274;
+}
+
+.container > fieldset:nth-of-type(1) input[type="radio"],
+.container > fieldset:nth-of-type(1) input[type="checkbox"] {
+    accent-color: #c2188f;
+}
+
+/* 2nd section: Summary (light orange) */
+.container > fieldset:nth-of-type(2) {
+    background-color: #fff6e5;
+    border-color: #f0d79a;
+}
+
+.container > fieldset:nth-of-type(2) > legend {
+    color: #b36b00;
+}
+
+/* 3rd section: Manage Categories (light green) */
+.container > fieldset:nth-of-type(3) {
+    background-color: #eaf7ef;
+    border-color: #a8d9bb;
+}
+
+.container > fieldset:nth-of-type(3) > legend {
+    color: #138754;
+}
+
 /* Tables */
 table {
     width: 100%;
@@ -100,7 +150,11 @@ label {
 
 /* Text Fields */
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+select {
     width: 100%;
     padding: 10px;
     border: 1px solid #bbbbbb;
@@ -110,10 +164,23 @@ input[type="number"] {
     background-color: #ffffff;
 }
 
-input:focus {
+input:focus,
+select:focus {
     outline: none;
     border-color: #3157d5;
     box-shadow: 0 0 4px rgba(49, 87, 213, 0.3);
+}
+
+/* Radio buttons and checkboxes (with their text) */
+.choice {
+    display: inline-block;
+    margin: 6px 14px 0 0;
+    font-weight: normal;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #3157d5;
 }
 
 /* Buttons */
@@ -150,40 +217,12 @@ input[type="reset"]:hover {
     background-color: #bbbbbb;
 }
 
-.approveBtn {
-    background-color: #138754;
-    margin-right: 6px;
-}
-
-.approveBtn:hover {
-    background-color: #0f6b43;
-}
-
-.rejectBtn,
 .deleteBtn {
     background-color: #dc3545;
 }
 
-.rejectBtn:hover,
 .deleteBtn:hover {
     background-color: #b52a37;
-}
-
-/* Status Colors */
-.status {
-    font-weight: bold;
-}
-
-.status.pending {
-    color: #d68910;
-}
-
-.status.approved {
-    color: #138754;
-}
-
-.status.rejected {
-    color: #dc3545;
 }
 
 /* Messages */
@@ -197,8 +236,47 @@ input[type="reset"]:hover {
     color: #138754;
 }
 
+/* Error message under each field (filled by JavaScript) */
 .error {
     color: red;
+    font-size: 13px;
+    margin: 4px 0 0 0;
+}
+
+.error:empty {
+    display: none;
+}
+
+/* Small grey helper text */
+.hint {
+    color: #6b7785;
+    font-size: 13px;
+    margin: 4px 0 0 0;
+}
+
+/* Final result box above the Register button */
+#ResultText {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+#ResultText:empty {
+    display: none;
+}
+
+#ResultText.success {
+    color: #138754;
+    background-color: #e3f4e6;
+    border: 1px solid #9fd3a9;
+}
+
+#ResultText.failed {
+    color: #a11b1b;
+    background-color: #fbe5e5;
+    border: 1px solid #efaaaa;
 }
 
 /* Footer */
@@ -248,9 +326,8 @@ input[type="reset"]:hover {
         padding-bottom: 0;
     }
 
-    #eventsTable {
-        display: block;
-        overflow-x: auto;
+    input[type="reset"] {
+        margin: 6px 0 0 0;
     }
 
     th,

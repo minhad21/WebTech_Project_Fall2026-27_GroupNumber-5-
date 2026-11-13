@@ -1,133 +1,145 @@
-// ---------- 1. Summary Update ----------
-function validateSummary(event)
+
+console.log("admin_style.js Connected");
+
+
+function validateAdminForm()
+{
+   
+    let nameOk     = validateName("AdminName", "NameError");
+    let idOk       = validatePattern("AdminID", "AdminIDError", "Admin ID", /^ADM-[0-9]{4}$/, "ADM-1234");
+    let emailOk    = validateEmail("AdminEmail", "EmailError");
+    let phoneOk    = validatePhone("AdminPhone", "PhoneError");
+    let genderOk   = validateRadio("gender", "GenderError", "Gender");
+    let roleOk     = validateSelect("AdminRole", "RoleError", "Admin role");
+    let permitOk   = validateCheckbox("permission", "PermissionError", "permission", 1);
+    let userOk     = validateUsername("UserName", "UserNameError");
+    let passwordOk = validatePassword("Password", "PasswordError");
+    let confirmOk  = validateConfirmPassword("Password", "ConfirmPassword", "ConfirmError");
+
+    let isValid = nameOk && idOk && emailOk && phoneOk && genderOk && roleOk &&
+                  permitOk && userOk && passwordOk && confirmOk;
+
+    showResult(isValid, "Admin registered successfully!");
+
+    
+    return false;
+}
+
+
+
+let summaryForm = document.getElementById("summaryForm");
+
+
+summaryForm.addEventListener("submit", function (event)
+{
+    event.preventDefault();      // stop the page from reloading
+
+    let users    = document.getElementById("totalUsers").value.trim();
+    let events   = document.getElementById("totalEvents").value.trim();
+    let bookings = document.getElementById("totalBookings").value.trim();
+    let message  = document.getElementById("summaryMessage");
+
+    if (users === "" || events === "" || bookings === "")
+    {
+        message.className = "error";
+        message.innerHTML = "Please fill in all three fields";
+        return;
+    }
+
+   
+    let values = [users, events, bookings];
+    for (let i = 0; i < values.length; i++)
+    {
+        let number = Number(values[i]);
+        if (!Number.isInteger(number) || number < 0)
+        {
+            message.className = "error";
+            message.innerHTML = "Values must be whole numbers (0 or more)";
+            return;
+        }
+    }
+
+    message.className = "success";
+    message.innerHTML = "Summary updated: " + users + " users, " + events +
+                        " events, " + bookings + " bookings";
+});
+
+// Clear button: also remove the message
+summaryForm.addEventListener("reset", function ()
+{
+    let message = document.getElementById("summaryMessage");
+    message.className = "";
+    message.innerHTML = "";
+});
+
+
+let categoryForm = document.getElementById("categoryForm");
+let categoryList = document.getElementById("categoryList");
+let categoryMessage = document.getElementById("message");
+
+
+categoryForm.addEventListener("submit", function (event)
 {
     event.preventDefault();
 
-    let users = document.getElementById("totalUsers").value;
-    let events = document.getElementById("totalEvents").value;
-    let bookings = document.getElementById("totalBookings").value;
-    let Error = document.getElementById("summaryMessage");
+    let input = document.getElementById("categoryName");
+    let name = input.value.trim();
 
-    if(users === "" || events === "" || bookings === "")
+    if (name === "")
     {
-        Error.innerHTML = "Please Fill All Summary Fields";
-        Error.className = "error";
-        return false;
+        categoryMessage.className = "error";
+        categoryMessage.innerHTML = "Please enter a category name";
+        return;
     }
-    else if(Number(users) < 0 || Number(events) < 0 || Number(bookings) < 0)
+    if (name.length < 3)
     {
-        Error.innerHTML = "Values Cannot Be Negative";
-        Error.className = "error";
-        return false;
+        categoryMessage.className = "error";
+        categoryMessage.innerHTML = "Category name must be at least 3 characters";
+        return;
     }
-    else
+    if (!/^[A-Za-z ]+$/.test(name))
     {
-        Error.innerHTML = "Summary Updated: Users " + users + ", Events " + events + ", Bookings " + bookings;
-        Error.className = "success";
-        return true;
-    }
-}
-
-function clearSummary()
-{
-    let Error = document.getElementById("summaryMessage");
-    Error.innerHTML = "";
-    Error.className = "";
-}
-
-
-// ---------- 2. Approve / Reject ----------
-function changeStatus(button, newStatus)
-{
-    let row = button.parentElement.parentElement;
-    let statusCell = row.querySelector(".status");
-
-    statusCell.innerHTML = newStatus;
-    statusCell.className = "status " + newStatus.toLowerCase();
-}
-
-function approveEvent()
-{
-    changeStatus(this, "Approved");
-}
-
-function rejectEvent()
-{
-    changeStatus(this, "Rejected");
-}
-
-
-// ---------- 3. Category Delete ----------
-function deleteCategory()
-{
-    let row = this.parentElement.parentElement;
-    row.remove();
-
-    let Error = document.getElementById("message");
-    Error.innerHTML = "Category Deleted";
-    Error.className = "success";
-}
-
-
-// ---------- 4. Category Add ----------
-function addCategory(event)
-{
-    event.preventDefault();
-
-    let name = document.getElementById("categoryName").value.trim();
-    let Error = document.getElementById("message");
-
-    if(name == "")
-    {
-        Error.innerHTML = "Category Name Is Required";
-        Error.className = "error";
-        return false;
+        categoryMessage.className = "error";
+        categoryMessage.innerHTML = "Category name can contain only letters and spaces";
+        return;
     }
 
-    let table = document.getElementById("categoryList");
+    // the same category cannot be added twice (row 0 is the heading row)
+    for (let i = 1; i < categoryList.rows.length; i++)
+    {
+        let oldName = categoryList.rows[i].cells[0].textContent.trim();
+        if (oldName.toLowerCase() === name.toLowerCase())
+        {
+            categoryMessage.className = "error";
+            categoryMessage.innerHTML = "This category already exists";
+            return;
+        }
+    }
 
-    let row = document.createElement("tr");
+    
+    let row = categoryList.insertRow(-1);
+    row.insertCell(0).textContent = name;
 
-    let nameCell = document.createElement("td");
-    nameCell.innerHTML = name;
-
-    let actionCell = document.createElement("td");
     let deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "Delete";
     deleteButton.className = "deleteBtn";
-    deleteButton.addEventListener("click", deleteCategory);
+    deleteButton.textContent = " Delete ";
+    row.insertCell(1).appendChild(deleteButton);
 
-    actionCell.appendChild(deleteButton);
-    row.appendChild(nameCell);
-    row.appendChild(actionCell);
-    table.appendChild(row);
-
-    Error.innerHTML = "Category Added: " + name;
-    Error.className = "success";
-    document.getElementById("categoryName").value = "";
-    return true;
-}
+    categoryMessage.className = "success";
+    categoryMessage.textContent = "Category added: " + name;
+    input.value = "";
+});
 
 
-// ---------- Event Listeners ----------
-document.getElementById("summaryForm").addEventListener("submit", validateSummary);
-document.getElementById("summaryForm").addEventListener("reset", clearSummary);
-document.getElementById("categoryForm").addEventListener("submit", addCategory);
-
-let approveButtons = document.querySelectorAll(".approveBtn");
-for(let i = 0; i < approveButtons.length; i++)
+categoryList.addEventListener("click", function (event)
 {
-    approveButtons[i].addEventListener("click", approveEvent);
-}
+    if (event.target.classList.contains("deleteBtn"))
+    {
+        let row = event.target.closest("tr");
+        let name = row.cells[0].textContent.trim();
+        row.remove();
 
-let rejectButtons = document.querySelectorAll(".rejectBtn");
-for(let i = 0; i < rejectButtons.length; i++)
-{
-    rejectButtons[i].addEventListener("click", rejectEvent);
-}
-
-let deleteButtons = document.querySelectorAll(".deleteBtn");
-for(let i = 0; i < deleteButtons.length; i++)
-{
-    deleteButtons[i].addEventListener("click", deleteCategory);
-}
+        categoryMessage.className = "success";
+        categoryMessage.textContent = "Category deleted: " + name;
+    }
+});

@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background-color: #f5f0eb;
+    color: #333333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+
+.header {
+    background-color: #800000;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+fieldset {
+    border: 2px solid #b06464;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: white;
+}
+
+legend {
+    color: #800000;
+    font-weight: bold;
+    padding: 0 10px;
+    font-size: 18px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+td:first-child {
+    width: 35%;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #8a4d4d;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    background-color: white;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #8a4d4d;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    background-color: white;
+    resize: none;
+}
+
+input:focus {
+    outline: none;
+    border-color: #800000;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #800000;
+}
+
+.error,
+#NameError,
+#AgeError,
+#EmailError,
+#GenderError,
+#DOBError,
+#PhoneError,
+#AddressError,
+#CountryError,
+#UsernameError,
+#PasswordError,
+#ConfirmPasswordError {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    background-color: #800000;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #4b0000;
+}
+
+input[type="reset"] {
+    background-color: #777777;
+    color: white;
+}
+
+input[type="reset"]:hover {
+    background-color: #555555;
+}
+
+
+.footer {
+    background-color: #4b0000;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+

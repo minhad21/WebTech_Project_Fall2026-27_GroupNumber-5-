@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/registration_style.css">
-    <script src="js/registration_script.js" defer></script>
+    <link rel="stylesheet" href="css/staff_registration.css">
+    <script src="js/staff_registration.js" defer></script>
 
-    <title>Eventora -  Registration Form</title>
+    <title>Eventora - Staff Registration Form</title>
 </head>
 
 <body>
@@ -17,50 +17,41 @@
 
         <div class="header">
             <h1>Eventora</h1>
-            <h2> Registration Form</h2>
+            <h2>Staff Registration Form</h2>
         </div>
 
-        <form id="registrationForm" onsubmit="return collect_data()">
+        <form id="staffregistrationForm" onsubmit="return collect_data()">
 
             <fieldset>
-                <legend> Personal Information</legend>
+                <legend>Staff's Personal Information</legend>
 
                 <table>
-                    <label for="registerAs">Register As</label>
-
-                    <select id="registerAs" name="registerAs" required>
-                     <option value="">Select Your Role</option>
-                     <option value="customer">Customer</option>
-                     <option value="organizer">Organizer</option>
-                     <option value="staff">Staff</option>
-                   </select>
-                   <p id="RoleError" class="error"></p>
                     <tr>
                         <td>
-                            <label for="customerName"> Name:</label>
+                            <label for="Name"> Name:</label>
                         </td>
                         <td>
-                            <input type="text" name="customerName" id="customerName" placeholder="Enter Your Name">
+                            <input type="text" name="Name" id="Name" placeholder="Enter Your Name">
                             <p id="NameError"></p>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <label for="customerAge">Age:</label>
+                            <label for="Age">Age:</label>
                         </td>
                         <td>
-                            <input type="number" name="customerAge" id="customerAge" placeholder="Enter Your Age">
+                            <input type="number" name="Age" id="Age" placeholder="Enter Your Age">
                             <p id="AgeError"></p>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <label for="customerEmail">Email:</label>
+                            <label for="Email">Email:</label>
                         </td>
                         <td>
-                            <input type="text" name="customerEmail" id="customerEmail" placeholder="Enter Your Email">
+                            <input type="text" name="Email" id="Email" placeholder="Enter Your Email">
                             <p id="EmailError"></p>
                         </td>
                     </tr>
@@ -175,7 +166,7 @@
         </form>
         <p class="login-link">
             Already have an account?
-            <a href="login.html">Login Here</a>
+            <a href="staff_login.html">Login Here</a>
         </p>
 
     </div>

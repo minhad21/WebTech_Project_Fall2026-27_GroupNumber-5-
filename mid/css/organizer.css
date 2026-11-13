@@ -1,4 +1,23 @@
 
+/* GOOGLE FONTS */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap');
+
+
+/* COLOR PALETTE */
+
+:root {
+    --primary: #252525;
+    --secondary: #C6A77B;
+    --background: #F5F1EB;
+    --white: #FFFFFF;
+    --text: #333333;
+    --border: #E4DDD2;
+}
+
+
+/* GENERAL STYLING */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,243 +25,297 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    color: #333;
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
     line-height: 1.6;
 }
 
-.container {
-    width: 80%;
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 25px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+/* NAVIGATION BAR */
+
+.navbar {
+    background-color: var(--primary);
+    padding: 20px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.header {
-    background-color: #3157d5;
-    color: white;
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--secondary);
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--secondary);
+}
+
+
+/* PAGE NAVIGATION */
+
+.page {
+    display: none !important;
+}
+
+.page.active {
+    display: block !important;
+}
+
+
+/* WELCOME PAGE */
+
+.welcome {
+    min-height: 85vh;
+    background: linear-gradient(
+        135deg,
+        #252525,
+        #49433C,
+        #685943
+    );
+    color: var(--white);
     text-align: center;
-    padding: 25px;
-    border-radius: 6px;
-    margin-bottom: 25px;
+    padding: 100px 20px;
 }
 
-.header h1 {
-    font-size: 32px;
-    margin-bottom: 8px;
+.welcome.page.active {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.header h2 {
-    font-size: 22px;
-    margin-bottom: 8px;
-}
-
-/* Form */
-form {
-    margin-top: 20px;
-}
-
-fieldset {
-    border: 2px solid #3157d5;
-    padding: 20px;
-    border-radius: 6px;
-}
-
-legend {
-    color: #3157d5;
-    font-weight: bold;
-    padding: 0 10px;
-    font-size: 18px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-td {
-    padding: 10px;
-    vertical-align: top;
-}
-
-td:first-child {
-    width: 35%;
-}
-
-label {
-    font-weight: bold;
-}
-
-/* Input Fields */
-input[type="text"],
-input[type="number"],
-input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #bbbbbb;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: white;
-}
-
-input:focus {
-    outline: none;
-    border-color: #3157d5;
-}
-
-/* Error Messages */
-.error,
-#NameError,
-#DateError,
-#VenueError,
-#PriceError,
-#CapacityError {
-    color: red;
+.welcome-label {
+    color: var(--secondary);
+    letter-spacing: 4px;
     font-size: 13px;
-    margin-top: 5px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
-/* Submit and Reset Buttons */
-input[type="submit"],
-input[type="reset"] {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-right: 10px;
-}
-
-input[type="submit"] {
-    background-color: #3157d5;
-    color: white;
-}
-
-input[type="submit"]:hover {
-    background-color: #2443ac;
-}
-
-input[type="reset"] {
-    background-color: #777777;
-    color: white;
-}
-
-input[type="reset"]:hover {
-    background-color: #555555;
-}
-
-/* Event Section */
-.event-section {
-    margin-top: 25px;
-}
-
-.event-section h3 {
-    color: #3157d5;
-    margin-bottom: 15px;
-    font-size: 22px;
-}
-
-/* Search */
-#searchEvent {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #bbbbbb;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    font-size: 14px;
-}
-
-/* Total Events */
-#totalEvents {
-    font-weight: bold;
-    color: #3157d5;
+.welcome h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
     margin-bottom: 15px;
 }
 
-/* Event Cards */
-.event-card {
-    background-color: #f8f8f8;
-    border: 1px solid #dddddd;
-    border-left: 5px solid #3157d5;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+.welcome h2 {
+    color: var(--secondary);
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 20px;
 }
 
-.event-card h4 {
-    color: #3157d5;
+.welcome p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+/* MAIN CONTAINER */
+
+.container {
+    max-width: 750px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    color: var(--primary);
+    text-align: center;
     margin-bottom: 10px;
 }
 
-.event-card p {
-    margin-bottom: 7px;
-}
-
-/* Edit Button */
-.edit-btn {
-    background-color: #3157d5;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-right: 8px;
-}
-
-.edit-btn:hover {
-    background-color: #2443ac;
-}
-
-/* Delete Button */
-.delete-btn {
-    background-color: #dc3545;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.delete-btn:hover {
-    background-color: #b52a37;
-}
-
-/* Footer */
-.footer {
-    background-color: #3157d5;
-    color: white;
+.subtitle {
     text-align: center;
-    padding: 15px;
-    margin-top: 30px;
+    color: #777777;
+    margin-bottom: 25px;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 600px) {
+
+/* FORMS */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    background-color: #FFFEFC;
+    color: var(--text);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(198, 167, 123, 0.15);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* REQUIRED FIELD ERROR MESSAGES */
+
+.error-message {
+    display: block;
+    color: #DC2626;
+    font-size: 12px;
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+
+/* BUTTONS */
+
+button {
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: none;
+    padding: 14px 25px;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+
+/* CREATE ACCOUNT LINK */
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.register-link a {
+    color: #9A7040;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* EVENT AND BOOKING LISTS */
+
+#eventList,
+#bookingList {
+    background-color: var(--background);
+    padding: 25px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+/* FOOTER */
+
+footer {
+    background-color: var(--primary);
+    color: var(--white);
+    text-align: center;
+    padding: 25px;
+}
+
+footer h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--secondary);
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+footer p {
+    font-size: 13px;
+    color: #D8D3CC;
+    margin-top: 5px;
+}
+
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .welcome h1 {
+        font-size: 32px;
+    }
+
+    .welcome h2 {
+        font-size: 22px;
+    }
+
     .container {
-        width: 95%;
-        padding: 15px;
+        margin: 20px 12px;
+        padding: 22px;
     }
 
-    table,
-    tbody,
-    tr,
-    td {
-        display: block;
-        width: 100%;
-    }
-
-    td {
-        padding: 5px;
-    }
-
-    input[type="submit"],
-    input[type="reset"] {
-        margin-bottom: 10px;
-    }
 }
