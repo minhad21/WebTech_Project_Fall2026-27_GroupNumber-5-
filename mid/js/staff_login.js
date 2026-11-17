@@ -7,11 +7,9 @@ function staffLoginUser()
 
     let valid = true;
 
-    // Clear previous errors
     document.getElementById("usernameError").innerHTML = "";
     document.getElementById("passwordError").innerHTML = "";
 
-    // Username validation
     if(username === "")
     {
         document.getElementById("usernameError").innerHTML = "Please enter your username or email";
@@ -19,7 +17,6 @@ function staffLoginUser()
         valid = false;
     }
 
-    // Password validation
     if(password === "")
     {
         document.getElementById("passwordError").innerHTML = "Please enter your password";
@@ -58,6 +55,3 @@ function staffLoginUser()
 
     return false;
 }
-
-    
-

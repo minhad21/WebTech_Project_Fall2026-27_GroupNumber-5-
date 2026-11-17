@@ -27,21 +27,18 @@ function collect_data()
         document.getElementById(errors[i]).innerHTML = "";
     }
 
-    // Name validation
     if (name === "")
     {
         document.getElementById("NameError").innerHTML = "Name is required";
         valid = false;
     }
 
-    // Age validation
     if (age === "" || age <= 18 || age >= 55)
     {
         document.getElementById("AgeError").innerHTML = "Enter an age between 18 and 55";
         valid = false;
     }
 
-    // Email validation
     if (email === "")
     {
         document.getElementById("EmailError").innerHTML = "Email is required";
@@ -53,14 +50,12 @@ function collect_data()
         valid = false;
     }
 
-    // Gender validation
     if (gender === null)
     {
         document.getElementById("GenderError").innerHTML = "Please select your gender";
         valid = false;
     }
 
-    // Date of birth validation
     if (dob === "")
     {
         document.getElementById("DOBError").innerHTML = "Date of birth is required";
@@ -72,7 +67,6 @@ function collect_data()
         valid = false;
     }
 
-    // Phone validation
     if (phone === "")
     {
         document.getElementById("PhoneError").innerHTML = "Phone number is required";
@@ -85,28 +79,24 @@ function collect_data()
        valid = false;
     }
 
-    // Address validation
     if (address === "")
     {
         document.getElementById("AddressError").innerHTML = "Address is required";
         valid = false;
     }
 
-    // Country validation
     if (country === "")
     {
         document.getElementById("CountryError").innerHTML = "Please select a country";
         valid = false;
     }
 
-    // Username validation
     if (username === "")
     {
         document.getElementById("UsernameError").innerHTML = "Username is required";
         valid = false;
     }
 
-    // Password validation
     if (password === "")
     {
         document.getElementById("PasswordError").innerHTML = "Password is required";
@@ -118,7 +108,6 @@ function collect_data()
         valid = false;
     }
 
-    // Confirm password validation
     if (confirmPassword === "")
     {
         document.getElementById("ConfirmPasswordError").innerHTML = "Please confirm your password";
@@ -130,54 +119,11 @@ function collect_data()
         valid = false;
     }
 
-    // Stop registration if any validation fails
     if (valid === false)
     {
         return false;
     }
 
-    // Getting previously registered users
-    let users = JSON.parse(localStorage.getItem("eventoraUsers")) || [];
-
-    // Checking duplicate username and email
-    for (let i = 0; i < users.length; i++)
-    {
-        if (users[i].username === username)
-        {
-            document.getElementById("UsernameError").innerHTML = "Username already exists";
-            return false;
-        }
-
-        if (users[i].email === email)
-        {
-            document.getElementById("EmailError").innerHTML = "Email already registered";
-            return false;
-        }
-    }
-
-    // Creating staff account
-    let staff = {
-        name: name,
-        age: age,
-        email: email,
-        gender: gender.value,
-        dob: dob,
-        phone: phone,
-        address: address,
-        country: country,
-        username: username,
-        password: password,
-        role: "Staff"
-    };
-
-    // Saving staff information
-    users.push(staff);
-
-    localStorage.setItem("eventoraUsers", JSON.stringify(users));
-
-    alert("Staff registration successful!");
-
-    // Redirecting to login page
     window.location.href = "login.html";
 
     return false;
