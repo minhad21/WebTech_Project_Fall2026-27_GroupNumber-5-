@@ -4,9 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Eventora Admin</title>
-        <link rel="stylesheet" href="admin_style.css">
-        <script src="admin_style.js"></script>
-        <script src="admin_auth.js"></script>
+        <link rel="stylesheet" href="admin.css">
+        <script src="admin.js"></script>
     </head>
 
     <body class="admin" onload="checkLogin()" onpageshow="if(event.persisted){checkLogin();}">
@@ -27,7 +26,7 @@
             <span id="WelcomeText"></span>
         </div>
 
-        
+        <!-- novalidate turns off the browser's own checks, so our JavaScript does all the validation -->
         <form onsubmit="return validateSummaryForm()" onreset="clearSummaryErrors()" novalidate>
 
             <fieldset>

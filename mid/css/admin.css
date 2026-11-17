@@ -1,4 +1,4 @@
-/* registration_style.css - Magenta theme */
+/* admin.css - Light Green theme */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #fbeaf7;
+    background-color: #eef8ee;
     color: #333333;
     line-height: 1.6;
     padding: 25px;
@@ -16,8 +16,8 @@ body {
 /* Header */
 .header {
     text-align: center;
-    background-color: #b0188c;
-    color: #ffffff;
+    background-color: #a5d6a7;
+    color: #1b5e20;
     padding: 20px;
     border-radius: 6px;
     margin: 0 auto 20px;
@@ -52,7 +52,7 @@ fieldset {
 legend {
     font-size: 18px;
     font-weight: bold;
-    color: #b0188c;
+    color: #2e7d32;
     padding: 0 10px;
 }
 
@@ -96,8 +96,8 @@ input[type="tel"] {
 
 input:focus {
     outline: none;
-    border-color: #b0188c;
-    box-shadow: 0 0 4px rgba(176, 24, 140, 0.3);
+    border-color: #2e7d32;
+    box-shadow: 0 0 4px rgba(46, 125, 50, 0.3);
 }
 
 /* Hint and Links */
@@ -113,7 +113,7 @@ input:focus {
 }
 
 .link-row a {
-    color: #b0188c;
+    color: #2e7d32;
     font-weight: bold;
     text-decoration: none;
 }
@@ -134,7 +134,8 @@ input:focus {
     font-weight: bold;
 }
 
-#RegisterResult {
+#SummaryResult,
+#CategoryMessage {
     margin: 10px 0;
 }
 
@@ -147,13 +148,13 @@ button {
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    background-color: #b0188c;
+    background-color: #2e7d32;
     color: white;
 }
 
 input[type="submit"]:hover,
 button:hover {
-    background-color: #8d1270;
+    background-color: #1b5e20;
 }
 
 input[type="reset"] {
@@ -172,9 +173,94 @@ input[type="reset"]:hover {
     background-color: #bbbbbb;
 }
 
+/* Dashboard tables */
+th {
+    background-color: #2e7d32;
+    color: white;
+}
+
+table[border="1"] th,
+table[border="1"] td {
+    border: 1px solid #cccccc;
+}
+
+table[border="1"] tr:nth-child(even) td {
+    background-color: #f1f8f1;
+}
+
+.deleteBtn {
+    background-color: #dc3545;
+}
+
+.deleteBtn:hover {
+    background-color: #b52a37;
+}
+
+/* Header attached to the navigation bar */
+.header.attached {
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 0;
+}
+
+/* Navigation Bar */
+.topnav {
+    display: flex;
+    gap: 12px;
+    background-color: #2e7d32;
+    padding: 12px;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    border-radius: 0 0 6px 6px;
+}
+
+.topnav a {
+    flex: 1;
+    text-align: center;
+    background-color: #ffffff;
+    color: #2e7d32;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 8px;
+    border-radius: 8px;
+}
+
+.topnav a:hover,
+.topnav a.active {
+    background-color: #e3f4e3;
+}
+
+/* Welcome text and Logout */
+.userbar {
+    max-width: 900px;
+    margin: 0 auto 15px;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.logout-row {
+    max-width: 900px;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+input[type="button"] {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #dc3545;
+    color: white;
+}
+
+input[type="button"]:hover {
+    background-color: #b52a37;
+}
+
 /* Footer */
 .footer {
-    background-color: #7a0f63;
+    background-color: #2e7d32;
     color: white;
     text-align: center;
     padding: 15px;
@@ -214,5 +300,13 @@ input[type="reset"]:hover {
 
     td:first-child {
         width: 40%;
+    }
+
+    .topnav {
+        flex-wrap: wrap;
+    }
+
+    .topnav a {
+        flex: 1 1 40%;
     }
 }

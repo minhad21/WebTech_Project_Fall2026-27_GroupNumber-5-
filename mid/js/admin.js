@@ -1,3 +1,41 @@
+// ---------- Dashboard page (runs on admin.html) ----------
+function checkLogin()
+{
+    let user = null;
+
+    try
+    {
+        user = sessionStorage.getItem("adminLoggedIn");
+    }
+    catch(e)
+    {
+    }
+
+    if(!user)
+    {
+        window.location.href = "admin_login.html";
+        return;
+    }
+
+    document.getElementById("WelcomeText").textContent = "Welcome, Admin";
+}
+
+
+function logout()
+{
+    try
+    {
+        sessionStorage.removeItem("adminLoggedIn");
+    }
+    catch(e)
+    {
+    }
+
+    // after logout, go back to the Home page
+    window.location.href = "index.html";
+}
+
+
 // ---------- Summary Form ----------
 function validateSummaryForm()
 {
