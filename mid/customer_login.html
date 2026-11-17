@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Eventora</title>
+
+    <link rel="stylesheet" href="css/customer_login.css">
+    <script src="js/customer_login.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h2>Eventora</h2>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+
+    <!-- Login Section -->
+    <section class="login-section">
+
+        <div class="login-container">
+
+            <h1>Welcome Back!</h1>
+            <p class="subtitle">Login to your Eventora account</p>
+
+            <form id="loginForm" onsubmit="return customerLoginUser()">
+
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+
+                    <input type="text" id="username"
+                    placeholder="Enter your username or email">
+
+                    <p class="error" id="usernameError"></p>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+
+                    <input type="password" id="password"
+                    placeholder="Enter your password">
+
+                    <p class="error" id="passwordError"></p>
+                </div>
+
+                <p class="error" id="loginError"></p>
+
+                <button type="submit" class="login-btn">
+                    Login
+                </button>
+
+                <button type="reset" class="login-btn" onclick="resetForm()">
+                 Reset
+                </button>
+
+                <p class="register-link">
+                    Don't have an account?
+                    <a href="customer_registration.html">Register Now</a>
+                </p>
+
+            </form>
+
+            <a href="index.html" class="back-home">Back to Home</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Eventora. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
