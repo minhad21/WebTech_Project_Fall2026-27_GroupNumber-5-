@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eventora Admin Registration</title>
+        <link rel="stylesheet" href="admin_registration.css">
+        <script src="admin_registration.js"></script>
+    </head>
+
+    <body class="admin">
+
+        <div class="header">
+            <h1>Eventora</h1>
+            <h2>Admin Registration</h2>
+        </div>
+
+        <!-- novalidate turns off the browser's own checks, so our JavaScript does all the validation -->
+        <form onsubmit="return validateRegistration()" onreset="clearRegisterErrors()" novalidate>
+
+            <fieldset>
+                <legend>Admin Information</legend>
+                <table>
+                    <tr>
+                        <td><label for="FullName">Full Name:</label></td>
+                        <td><input type="text" id="FullName" placeholder="Enter full name">
+                            <p class="error" id="FullNameError"></p></td>
+                    </tr>
+                    <tr>
+                        <td><label for="AdminEmail">Email:</label></td>
+                        <td><input type="email" id="AdminEmail" placeholder="Enter email">
+                            <p class="error" id="EmailError"></p></td>
+                    </tr>
+                    <tr>
+                        <td><label for="AdminPhone">Phone:</label></td>
+                        <td><input type="tel" id="AdminPhone" placeholder="e.g. 01712345678">
+                            <p class="error" id="PhoneError"></p></td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Account</legend>
+                <table>
+                    <tr>
+                        <td><label for="RegUserName">Username:</label></td>
+                        <td><input type="text" id="RegUserName" placeholder="4 - 15 characters">
+                            <p class="error" id="RegUserNameError"></p></td>
+                    </tr>
+                    <tr>
+                        <td><label for="RegPassword">Password:</label></td>
+                        <td><input type="password" id="RegPassword" placeholder="Enter password">
+                            <p class="hint">At least 8 characters with an uppercase letter, a lowercase letter and a number</p>
+                            <p class="error" id="RegPasswordError"></p></td>
+                    </tr>
+                    <tr>
+                        <td><label for="ConfirmPassword">Confirm Password:</label></td>
+                        <td><input type="password" id="ConfirmPassword" placeholder="Re-enter password">
+                            <p class="error" id="ConfirmError"></p></td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <p id="RegisterResult"></p>
+
+            <input type="submit" id="registerBtn" value="Register">
+            <input type="reset" id="resetBtn" value="Reset">
+
+            <p class="link-row">Already have an account? <a href="admin_login.html">Login here</a></p>
+            <p class="link-row"><a href="index.html">Back to Home</a></p>
+        </form>
+
+        <div class="footer">
+            <h5>&copy; 2026 Eventora - CSC 3215 Web Technologies</h5>
+        </div>
+    </body>
+</html>

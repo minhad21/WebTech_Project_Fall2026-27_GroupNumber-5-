@@ -1,0 +1,312 @@
+/* admin.css - Light Green theme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #eef8ee;
+    color: #333333;
+    line-height: 1.6;
+    padding: 25px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    background-color: #a5d6a7;
+    color: #1b5e20;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 0 auto 20px;
+    max-width: 900px;
+}
+
+.header h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.header h2 {
+    font-size: 22px;
+    font-weight: normal;
+}
+
+/* Form and Sections */
+form {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+fieldset {
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+legend {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2e7d32;
+    padding: 0 10px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+td:first-child {
+    width: 35%;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+}
+
+/* Text Fields */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 4px rgba(46, 125, 50, 0.3);
+}
+
+/* Hint and Links */
+.hint {
+    font-size: 12px;
+    color: #666666;
+    margin-top: 4px;
+}
+
+.link-row {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.link-row a {
+    color: #2e7d32;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.link-row a:hover {
+    text-decoration: underline;
+}
+
+/* Error and Result Messages */
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.success {
+    color: #138754;
+    font-weight: bold;
+}
+
+#SummaryResult,
+#CategoryMessage {
+    margin: 10px 0;
+}
+
+/* Buttons */
+input[type="submit"],
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #2e7d32;
+    color: white;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #1b5e20;
+}
+
+input[type="reset"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #dddddd;
+    color: #333333;
+    margin-left: 8px;
+}
+
+input[type="reset"]:hover {
+    background-color: #bbbbbb;
+}
+
+/* Dashboard tables */
+th {
+    background-color: #2e7d32;
+    color: white;
+}
+
+table[border="1"] th,
+table[border="1"] td {
+    border: 1px solid #cccccc;
+}
+
+table[border="1"] tr:nth-child(even) td {
+    background-color: #f1f8f1;
+}
+
+.deleteBtn {
+    background-color: #dc3545;
+}
+
+.deleteBtn:hover {
+    background-color: #b52a37;
+}
+
+/* Header attached to the navigation bar */
+.header.attached {
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 0;
+}
+
+/* Navigation Bar */
+.topnav {
+    display: flex;
+    gap: 12px;
+    background-color: #2e7d32;
+    padding: 12px;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    border-radius: 0 0 6px 6px;
+}
+
+.topnav a {
+    flex: 1;
+    text-align: center;
+    background-color: #ffffff;
+    color: #2e7d32;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 8px;
+    border-radius: 8px;
+}
+
+.topnav a:hover,
+.topnav a.active {
+    background-color: #e3f4e3;
+}
+
+/* Welcome text and Logout */
+.userbar {
+    max-width: 900px;
+    margin: 0 auto 15px;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.logout-row {
+    max-width: 900px;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+input[type="button"] {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #dc3545;
+    color: white;
+}
+
+input[type="button"]:hover {
+    background-color: #b52a37;
+}
+
+/* Footer */
+.footer {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin: 20px auto 0;
+    max-width: 900px;
+    border-radius: 5px;
+}
+
+.footer h5 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+    .header h2 {
+        font-size: 18px;
+    }
+
+    fieldset {
+        padding: 12px;
+        min-width: 0;
+    }
+
+    td {
+        padding: 6px;
+        font-size: 13px;
+    }
+
+    td:first-child {
+        width: 40%;
+    }
+
+    .topnav {
+        flex-wrap: wrap;
+    }
+
+    .topnav a {
+        flex: 1 1 40%;
+    }
+}
