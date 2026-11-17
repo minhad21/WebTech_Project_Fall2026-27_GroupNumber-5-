@@ -7,13 +7,13 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f7fb;
+    background-color: #ececec;
     color: #333;
 }
 
 /* Navigation Bar */
 header {
-    background-color: #3157D5;
+    background-color: #559907;
     color: white;
     padding: 18px 5%;
     display: flex;
@@ -43,7 +43,7 @@ nav a:hover {
 
 .logout-btn {
     background-color: white;
-    color: #3157D5;
+    color: #559907;
     padding: 10px 18px;
     text-decoration: none;
     border-radius: 5px;
@@ -51,13 +51,13 @@ nav a:hover {
 
 /* Welcome Section */
 .welcome {
-    background-color: #e4eaff;
+    background-color: #e5ffe4;
     padding: 45px 5%;
     text-align: center;
 }
 
 .welcome h1 {
-    color: #3157D5;
+    color: #559907;
     font-size: 32px;
     margin-bottom: 12px;
 }
@@ -90,7 +90,7 @@ nav a:hover {
 }
 
 .summary-card p {
-    color: #3157D5;
+    color: #559907;
     font-size: 28px;
     font-weight: bold;
 }
@@ -103,7 +103,7 @@ nav a:hover {
 .events-section h2,
 .booking-section h2,
 .profile-section h2 {
-    color: #3157D5;
+    color: #559907;
     margin-bottom: 25px;
 }
 
@@ -128,7 +128,7 @@ nav a:hover {
 
 .search-area button,
 .event-info button {
-    background-color: #3157D5;
+    background-color: #559907;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -138,7 +138,7 @@ nav a:hover {
 
 .search-area button:hover,
 .event-info button:hover {
-    background-color: #203fa8;
+    background-color: #559907;
 }
 
 /* Event Cards */
@@ -166,15 +166,15 @@ nav a:hover {
 }
 
 .tech {
-    background: linear-gradient(135deg, #3157D5, #7b9cff);
+    background: linear-gradient(135deg, #559907, #84e514);
 }
 
 .music {
-    background: linear-gradient(135deg, #8e44ad, #d980fa);
+    background: linear-gradient(135deg, #559907, #84e514);
 }
 
 .education {
-    background: linear-gradient(135deg, #16876a, #65c9a8);
+    background: linear-gradient(135deg, #559907, #84e514);
 }
 
 .event-info {
@@ -192,7 +192,7 @@ nav a:hover {
 }
 
 .event-info h4 {
-    color: #3157D5;
+    color: #559907;
     margin: 15px 0;
 }
 
@@ -214,12 +214,12 @@ th, td {
 }
 
 th {
-    background-color: #3157D5;
+    background-color: #559907;
     color: white;
 }
 
 .confirmed {
-    color: green;
+    color: #559907;
     font-weight: bold;
 }
 
@@ -237,7 +237,7 @@ th {
 
 /* Footer */
 footer {
-    background-color: #26345c;
+    background-color: #376701;
     color: white;
     text-align: center;
     padding: 20px;
