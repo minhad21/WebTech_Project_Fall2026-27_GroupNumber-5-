@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eventora Admin Login</title>
+        <link rel="stylesheet" href="login_style.css">
+        <script src="admin_auth.js"></script>
+    </head>
+
+    <body class="admin">
+
+        <div class="header">
+            <h1>Eventora</h1>
+            <h2>Admin Login</h2>
+        </div>
+
+        <!-- novalidate turns off the browser's own checks, so our JavaScript does all the validation -->
+        <form class="narrow" onsubmit="return validateLogin()" onreset="clearLoginErrors()" novalidate>
+
+            <fieldset>
+                <legend>Login</legend>
+                <table>
+                    <tr>
+                        <td><label for="LoginUserName">Username:</label></td>
+                        <td><input type="text" id="LoginUserName" placeholder="Enter username">
+                            <p class="error" id="LoginUserNameError"></p></td>
+                    </tr>
+                    <tr>
+                        <td><label for="LoginPassword">Password:</label></td>
+                        <td><input type="password" id="LoginPassword" placeholder="Enter password">
+                            <p class="error" id="LoginPasswordError"></p></td>
+                    </tr>
+                </table>
+
+                <p id="LoginResult"></p>
+
+                <input type="submit" id="loginBtn" value="Login">
+                <input type="reset" id="resetBtn" value="Reset">
+
+                <p class="link-row">Don't have an account? <a href="admin_registration.html">Register here</a></p>
+                <p class="link-row"><a href="index.html">Back to Home</a></p>
+            </fieldset>
+
+        </form>
+
+        <div class="footer">
+            <h5>&copy; 2026 Eventora - CSC 3215 Web Technologies</h5>
+        </div>
+    </body>
+</html>

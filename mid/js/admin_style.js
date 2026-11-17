@@ -1,145 +1,133 @@
-
-console.log("admin_style.js Connected");
-
-
-function validateAdminForm()
+// ---------- Summary Form ----------
+function validateSummaryForm()
 {
-   
-    let nameOk     = validateName("AdminName", "NameError");
-    let idOk       = validatePattern("AdminID", "AdminIDError", "Admin ID", /^ADM-[0-9]{4}$/, "ADM-1234");
-    let emailOk    = validateEmail("AdminEmail", "EmailError");
-    let phoneOk    = validatePhone("AdminPhone", "PhoneError");
-    let genderOk   = validateRadio("gender", "GenderError", "Gender");
-    let roleOk     = validateSelect("AdminRole", "RoleError", "Admin role");
-    let permitOk   = validateCheckbox("permission", "PermissionError", "permission", 1);
-    let userOk     = validateUsername("UserName", "UserNameError");
-    let passwordOk = validatePassword("Password", "PasswordError");
-    let confirmOk  = validateConfirmPassword("Password", "ConfirmPassword", "ConfirmError");
+    let validUsers = validateCount("TotalUsers", "UsersError", "Total Users");
+    let validEvents = validateCount("TotalEvents", "EventsError", "Total Events");
+    let validBookings = validateCount("TotalBookings", "BookingsError", "Total Bookings");
 
-    let isValid = nameOk && idOk && emailOk && phoneOk && genderOk && roleOk &&
-                  permitOk && userOk && passwordOk && confirmOk;
+    let Result = document.getElementById("SummaryResult");
 
-    showResult(isValid, "Admin registered successfully!");
+    if(validUsers && validEvents && validBookings)
+    {
+        Result.className = "success";
+        Result.textContent = "Summary Updated: Users " + document.getElementById("TotalUsers").value +
+                             ", Events " + document.getElementById("TotalEvents").value +
+                             ", Bookings " + document.getElementById("TotalBookings").value;
+    }
+    else
+    {
+        Result.textContent = "";
+    }
 
-    
+    // always false, so the page does not reload
     return false;
 }
 
 
-
-let summaryForm = document.getElementById("summaryForm");
-
-
-summaryForm.addEventListener("submit", function (event)
+function validateCount(inputId, errorId, label)
 {
-    event.preventDefault();      // stop the page from reloading
+    let value = document.getElementById(inputId).value.trim();
+    let Error = document.getElementById(errorId);
 
-    let users    = document.getElementById("totalUsers").value.trim();
-    let events   = document.getElementById("totalEvents").value.trim();
-    let bookings = document.getElementById("totalBookings").value.trim();
-    let message  = document.getElementById("summaryMessage");
-
-    if (users === "" || events === "" || bookings === "")
+    if(value === "")
     {
-        message.className = "error";
-        message.innerHTML = "Please fill in all three fields";
-        return;
+        Error.textContent = "Please Enter " + label;
+        return false;
+    }
+    else if(Number(value) < 0)
+    {
+        Error.textContent = label + " Cannot Be Negative";
+        return false;
+    }
+    else if(!Number.isInteger(Number(value)))
+    {
+        Error.textContent = label + " Must Be A Whole Number";
+        return false;
+    }
+    else
+    {
+        Error.textContent = "";
+        return true;
+    }
+}
+
+
+function clearSummaryErrors()
+{
+    document.getElementById("UsersError").textContent = "";
+    document.getElementById("EventsError").textContent = "";
+    document.getElementById("BookingsError").textContent = "";
+    document.getElementById("SummaryResult").textContent = "";
+}
+
+
+// ---------- Category Form ----------
+function addCategory()
+{
+    let name = document.getElementById("CategoryName").value.trim();
+    let Error = document.getElementById("CategoryError");
+    let Message = document.getElementById("CategoryMessage");
+    let table = document.getElementById("categoryList");
+
+    Message.textContent = "";
+
+    if(name === "")
+    {
+        Error.textContent = "Category Name Is Required";
+        return false;
+    }
+    else if(name.length < 3)
+    {
+        Error.textContent = "Category Name Must Be At Least 3 Characters";
+        return false;
     }
 
-   
-    let values = [users, events, bookings];
-    for (let i = 0; i < values.length; i++)
+    // do not allow the same category twice
+    let rows = table.getElementsByTagName("tr");
+    for(let i = 1; i < rows.length; i++)
     {
-        let number = Number(values[i]);
-        if (!Number.isInteger(number) || number < 0)
+        if(rows[i].cells[0].textContent.toLowerCase() === name.toLowerCase())
         {
-            message.className = "error";
-            message.innerHTML = "Values must be whole numbers (0 or more)";
-            return;
+            Error.textContent = "This Category Already Exists";
+            return false;
         }
     }
 
-    message.className = "success";
-    message.innerHTML = "Summary updated: " + users + " users, " + events +
-                        " events, " + bookings + " bookings";
-});
+    Error.textContent = "";
 
-// Clear button: also remove the message
-summaryForm.addEventListener("reset", function ()
-{
-    let message = document.getElementById("summaryMessage");
-    message.className = "";
-    message.innerHTML = "";
-});
+    let row = document.createElement("tr");
 
+    let nameCell = document.createElement("td");
+    nameCell.textContent = name;
 
-let categoryForm = document.getElementById("categoryForm");
-let categoryList = document.getElementById("categoryList");
-let categoryMessage = document.getElementById("message");
-
-
-categoryForm.addEventListener("submit", function (event)
-{
-    event.preventDefault();
-
-    let input = document.getElementById("categoryName");
-    let name = input.value.trim();
-
-    if (name === "")
-    {
-        categoryMessage.className = "error";
-        categoryMessage.innerHTML = "Please enter a category name";
-        return;
-    }
-    if (name.length < 3)
-    {
-        categoryMessage.className = "error";
-        categoryMessage.innerHTML = "Category name must be at least 3 characters";
-        return;
-    }
-    if (!/^[A-Za-z ]+$/.test(name))
-    {
-        categoryMessage.className = "error";
-        categoryMessage.innerHTML = "Category name can contain only letters and spaces";
-        return;
-    }
-
-    // the same category cannot be added twice (row 0 is the heading row)
-    for (let i = 1; i < categoryList.rows.length; i++)
-    {
-        let oldName = categoryList.rows[i].cells[0].textContent.trim();
-        if (oldName.toLowerCase() === name.toLowerCase())
-        {
-            categoryMessage.className = "error";
-            categoryMessage.innerHTML = "This category already exists";
-            return;
-        }
-    }
-
-    
-    let row = categoryList.insertRow(-1);
-    row.insertCell(0).textContent = name;
-
+    let actionCell = document.createElement("td");
     let deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
     deleteButton.className = "deleteBtn";
-    deleteButton.textContent = " Delete ";
-    row.insertCell(1).appendChild(deleteButton);
+    deleteButton.type = "button";
+    deleteButton.setAttribute("onclick", "deleteCategory(this)");
 
-    categoryMessage.className = "success";
-    categoryMessage.textContent = "Category added: " + name;
-    input.value = "";
-});
+    actionCell.appendChild(deleteButton);
+    row.appendChild(nameCell);
+    row.appendChild(actionCell);
+    table.appendChild(row);
+
+    Message.className = "success";
+    Message.textContent = "Category Added: " + name;
+    document.getElementById("CategoryName").value = "";
+
+    // always false, so the page does not reload
+    return false;
+}
 
 
-categoryList.addEventListener("click", function (event)
+function deleteCategory(button)
 {
-    if (event.target.classList.contains("deleteBtn"))
-    {
-        let row = event.target.closest("tr");
-        let name = row.cells[0].textContent.trim();
-        row.remove();
+    let row = button.parentElement.parentElement;
+    let name = row.cells[0].textContent;
+    row.remove();
 
-        categoryMessage.className = "success";
-        categoryMessage.textContent = "Category deleted: " + name;
-    }
-});
+    let Message = document.getElementById("CategoryMessage");
+    Message.className = "success";
+    Message.textContent = "Category Deleted: " + name;
+}

@@ -1,4 +1,4 @@
-/* Basic Setup */
+/* admin_style.css - Light Green theme */
 * {
     margin: 0;
     padding: 0;
@@ -7,30 +7,21 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #c8a27c;
+    background-color: #eef8ee;
     color: #333333;
     line-height: 1.6;
-}
-
-/* Main Container */
-.container {
-    width: 80%;
-    max-width: 900px;
-    margin: 30px auto;
-    background-color: white;
     padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Header */
 .header {
     text-align: center;
-    background-color: #3157d5;
-    color: white;
+    background-color: #a5d6a7;
+    color: #1b5e20;
     padding: 20px;
     border-radius: 6px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
+    max-width: 900px;
 }
 
 .header h1 {
@@ -46,9 +37,12 @@ body {
 /* Form and Sections */
 form {
     width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 fieldset {
+    background-color: white;
     border: 1px solid #cccccc;
     border-radius: 6px;
     padding: 20px;
@@ -58,64 +52,15 @@ fieldset {
 legend {
     font-size: 18px;
     font-weight: bold;
-    color: #3157d5;
+    color: #2e7d32;
     padding: 0 10px;
-}
-
-/* Section Colors (one color for each main section) */
-/* 1st section: Admin Registration form (magenta) */
-.container > fieldset:nth-of-type(1) {
-    background-color: #fdf0fa;
-    border-color: #d63ab0;
-}
-
-.container > fieldset:nth-of-type(1) legend {
-    color: #c2188f;
-}
-
-/* small boxes inside the registration form stay white */
-.container > fieldset:nth-of-type(1) fieldset {
-    background-color: #ffffff;
-    border-color: #e9a6d6;
-}
-
-.container > fieldset:nth-of-type(1) input[type="submit"] {
-    background-color: #c2188f;
-}
-
-.container > fieldset:nth-of-type(1) input[type="submit"]:hover {
-    background-color: #9c1274;
-}
-
-.container > fieldset:nth-of-type(1) input[type="radio"],
-.container > fieldset:nth-of-type(1) input[type="checkbox"] {
-    accent-color: #c2188f;
-}
-
-/* 2nd section: Summary (light orange) */
-.container > fieldset:nth-of-type(2) {
-    background-color: #fff6e5;
-    border-color: #f0d79a;
-}
-
-.container > fieldset:nth-of-type(2) > legend {
-    color: #b36b00;
-}
-
-/* 3rd section: Manage Categories (light green) */
-.container > fieldset:nth-of-type(3) {
-    background-color: #eaf7ef;
-    border-color: #a8d9bb;
-}
-
-.container > fieldset:nth-of-type(3) > legend {
-    color: #138754;
 }
 
 /* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 10px;
 }
 
 th,
@@ -125,21 +70,7 @@ td {
     vertical-align: top;
 }
 
-th {
-    background-color: #3157d5;
-    color: white;
-}
-
-table[border="1"] th,
-table[border="1"] td {
-    border: 1px solid #cccccc;
-}
-
-table[border="1"] tr:nth-child(even) td {
-    background-color: #f8f8f8;
-}
-
-form td:first-child {
+td:first-child {
     width: 35%;
 }
 
@@ -151,10 +82,9 @@ label {
 /* Text Fields */
 input[type="text"],
 input[type="number"],
-input[type="password"],
 input[type="email"],
-input[type="tel"],
-select {
+input[type="password"],
+input[type="tel"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #bbbbbb;
@@ -164,23 +94,49 @@ select {
     background-color: #ffffff;
 }
 
-input:focus,
-select:focus {
+input:focus {
     outline: none;
-    border-color: #3157d5;
-    box-shadow: 0 0 4px rgba(49, 87, 213, 0.3);
+    border-color: #2e7d32;
+    box-shadow: 0 0 4px rgba(46, 125, 50, 0.3);
 }
 
-/* Radio buttons and checkboxes (with their text) */
-.choice {
-    display: inline-block;
-    margin: 6px 14px 0 0;
-    font-weight: normal;
+/* Hint and Links */
+.hint {
+    font-size: 12px;
+    color: #666666;
+    margin-top: 4px;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-    accent-color: #3157d5;
+.link-row {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.link-row a {
+    color: #2e7d32;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.link-row a:hover {
+    text-decoration: underline;
+}
+
+/* Error and Result Messages */
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.success {
+    color: #138754;
+    font-weight: bold;
+}
+
+#SummaryResult,
+#CategoryMessage {
+    margin: 10px 0;
 }
 
 /* Buttons */
@@ -192,13 +148,13 @@ button {
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    background-color: #3157d5;
+    background-color: #2e7d32;
     color: white;
 }
 
 input[type="submit"]:hover,
 button:hover {
-    background-color: #2443ac;
+    background-color: #1b5e20;
 }
 
 input[type="reset"] {
@@ -217,6 +173,21 @@ input[type="reset"]:hover {
     background-color: #bbbbbb;
 }
 
+/* Dashboard tables */
+th {
+    background-color: #2e7d32;
+    color: white;
+}
+
+table[border="1"] th,
+table[border="1"] td {
+    border: 1px solid #cccccc;
+}
+
+table[border="1"] tr:nth-child(even) td {
+    background-color: #f1f8f1;
+}
+
 .deleteBtn {
     background-color: #dc3545;
 }
@@ -225,67 +196,76 @@ input[type="reset"]:hover {
     background-color: #b52a37;
 }
 
-/* Messages */
-#summaryMessage,
-#message {
-    margin: 12px 0;
-    font-weight: bold;
+/* Header attached to the navigation bar */
+.header.attached {
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 0;
 }
 
-.success {
-    color: #138754;
+/* Navigation Bar */
+.topnav {
+    display: flex;
+    gap: 12px;
+    background-color: #2e7d32;
+    padding: 12px;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    border-radius: 0 0 6px 6px;
 }
 
-/* Error message under each field (filled by JavaScript) */
-.error {
-    color: red;
-    font-size: 13px;
-    margin: 4px 0 0 0;
-}
-
-.error:empty {
-    display: none;
-}
-
-/* Small grey helper text */
-.hint {
-    color: #6b7785;
-    font-size: 13px;
-    margin: 4px 0 0 0;
-}
-
-/* Final result box above the Register button */
-#ResultText {
+.topnav a {
+    flex: 1;
     text-align: center;
+    background-color: #ffffff;
+    color: #2e7d32;
     font-weight: bold;
-    padding: 10px;
-    border-radius: 6px;
-    margin: 10px 0;
+    text-decoration: none;
+    padding: 10px 8px;
+    border-radius: 8px;
 }
 
-#ResultText:empty {
-    display: none;
+.topnav a:hover,
+.topnav a.active {
+    background-color: #e3f4e3;
 }
 
-#ResultText.success {
-    color: #138754;
-    background-color: #e3f4e6;
-    border: 1px solid #9fd3a9;
+/* Welcome text and Logout */
+.userbar {
+    max-width: 900px;
+    margin: 0 auto 15px;
+    font-weight: bold;
+    color: #2e7d32;
 }
 
-#ResultText.failed {
-    color: #a11b1b;
-    background-color: #fbe5e5;
-    border: 1px solid #efaaaa;
+.logout-row {
+    max-width: 900px;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+input[type="button"] {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #dc3545;
+    color: white;
+}
+
+input[type="button"]:hover {
+    background-color: #b52a37;
 }
 
 /* Footer */
 .footer {
-    background-color: #263b75;
+    background-color: #2e7d32;
     color: white;
     text-align: center;
     padding: 15px;
-    margin-top: 20px;
+    margin: 20px auto 0;
+    max-width: 900px;
     border-radius: 5px;
 }
 
@@ -296,10 +276,8 @@ input[type="reset"]:hover {
 
 /* Responsive Design */
 @media screen and (max-width: 600px) {
-    .container {
-        width: 95%;
-        padding: 15px;
-        margin: 15px auto;
+    body {
+        padding: 12px;
     }
 
     .header h1 {
@@ -315,23 +293,20 @@ input[type="reset"]:hover {
         min-width: 0;
     }
 
-    form td {
-        display: block;
-        width: 100%;
-        padding: 6px;
-    }
-
-    form td:first-child {
-        width: 100%;
-        padding-bottom: 0;
-    }
-
-    input[type="reset"] {
-        margin: 6px 0 0 0;
-    }
-
-    th,
     td {
+        padding: 6px;
         font-size: 13px;
+    }
+
+    td:first-child {
+        width: 40%;
+    }
+
+    .topnav {
+        flex-wrap: wrap;
+    }
+
+    .topnav a {
+        flex: 1 1 40%;
     }
 }
