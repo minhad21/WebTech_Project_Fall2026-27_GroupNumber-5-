@@ -18,9 +18,6 @@ function collect_data()
        validUsername && validPassword && validConfirmPassword)
     {
         alert("Registration Successful!");
-
-        window.location.href = "customer_login.html";
-
         return false;
     }
     else
@@ -28,7 +25,6 @@ function collect_data()
         return false;
     }
 }
-
 
 
 function validateName()
@@ -43,11 +39,10 @@ function validateName()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Valid Name: " + name;
         return true;
     }
 }
-
 
 
 function validAgeFunc()
@@ -67,11 +62,10 @@ function validAgeFunc()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Valid Age: " + age;
         return true;
     }
 }
-
 
 
 function validateEmail()
@@ -91,11 +85,10 @@ function validateEmail()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Valid Email: " + email;
         return true;
     }
 }
-
 
 
 function validateGender()
@@ -112,11 +105,18 @@ function validateGender()
     }
     else
     {
-        Error.innerHTML = "";
+        if(male.checked)
+        {
+            Error.innerHTML = "Selected Gender: Male";
+        }
+        else
+        {
+            Error.innerHTML = "Selected Gender: Female";
+        }
+
         return true;
     }
 }
-
 
 
 function validateDOB()
@@ -136,11 +136,10 @@ function validateDOB()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Valid Date of Birth: " + dob;
         return true;
     }
 }
-
 
 
 function validatePhone()
@@ -160,11 +159,10 @@ function validatePhone()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Valid Phone: " + phone;
         return true;
     }
 }
-
 
 
 function validateAddress()
@@ -179,11 +177,10 @@ function validateAddress()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Valid Address: " + address;
         return true;
     }
 }
-
 
 
 function validateCountry()
@@ -198,11 +195,10 @@ function validateCountry()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Selected Country: " + country;
         return true;
     }
 }
-
 
 
 function validateUsername()
@@ -217,11 +213,10 @@ function validateUsername()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Valid Username: " + username;
         return true;
     }
 }
-
 
 
 function validatePassword()
@@ -241,11 +236,10 @@ function validatePassword()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Password is valid";
         return true;
     }
 }
-
 
 
 function validateConfirmPassword()
@@ -266,11 +260,10 @@ function validateConfirmPassword()
     }
     else
     {
-        Error.innerHTML = "";
+        Error.innerHTML = "Password matched successfully";
         return true;
     }
 }
-
 
 
 function resetForm()
