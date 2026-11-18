@@ -10,7 +10,7 @@ body {
     color: #333333;
 }
 
-/* Header */
+
 header {
     background-color: #559907;
     color: white;
@@ -37,7 +37,7 @@ nav a:hover {
     color: #94e23b;
 }
 
-/* Login Section */
+
 .login-section {
     min-height: 80vh;
     display: flex;
@@ -67,7 +67,7 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-/* Form */
+
 .form-group {
     margin-bottom: 18px;
 }
@@ -93,14 +93,14 @@ nav a:hover {
     border: 2px solid #559907;
 }
 
-/* Error Message */
+
 .error {
     color: red;
     font-size: 13px;
     margin-top: 5px;
 }
 
-/* Login Button */
+
 .login-btn {
     width: 100%;
     padding: 13px;
@@ -117,7 +117,7 @@ nav a:hover {
     background-color: #7dd21b;
 }
 
-/* Register Link */
+
 .register-link {
     text-align: center;
     margin-top: 22px;
@@ -143,7 +143,7 @@ nav a:hover {
     color: #559907;
 }
 
-/* Footer */
+
 footer {
     background-color: #559907;
     color: white;
@@ -151,7 +151,7 @@ footer {
     padding: 20px;
 }
 
-/* Responsive */
+
 @media (max-width: 500px) {
 
     .login-container {

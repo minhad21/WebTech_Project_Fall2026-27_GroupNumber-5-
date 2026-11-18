@@ -1,4 +1,4 @@
-// ---------- Storage helpers (localStorage is only used as demo data, no backend) ----------
+
 function getAdmins()
 {
     try
@@ -29,7 +29,7 @@ function saveAdmins(admins)
 }
 
 
-// ---------- Registration ----------
+
 function validateRegistration()
 {
     let validName = validateFullName();
@@ -67,7 +67,7 @@ function validateRegistration()
         }
     }
 
-    // always false, so the page does not reload
+    
     return false;
 }
 
@@ -160,7 +160,7 @@ function validateRegUserName()
     }
     else
     {
-        // do not allow the same username twice
+        
         let admins = getAdmins();
         for(let i = 0; i < admins.length; i++)
         {

@@ -1,4 +1,4 @@
-// ---------- Storage helpers (localStorage is only used as demo data, no backend) ----------
+
 function getAdmins()
 {
     try
@@ -16,7 +16,7 @@ function getAdmins()
 }
 
 
-// ---------- Login ----------
+
 function validateLogin()
 {
     let Username = document.getElementById("LoginUserName").value.trim();
@@ -48,7 +48,7 @@ function validateLogin()
         return false;
     }
 
-    // check the saved admin accounts
+    
     let admins = getAdmins();
     let found = false;
 
@@ -81,7 +81,7 @@ function validateLogin()
     Result.textContent = "Login Successful";
     window.location.href = "admin.html";
 
-    // always false, the redirect above opens the dashboard
+    
     return false;
 }
 

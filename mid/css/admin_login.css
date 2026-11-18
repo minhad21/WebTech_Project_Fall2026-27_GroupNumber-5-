@@ -1,4 +1,4 @@
-/* admin_login.css - Sky Blue theme */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ body {
     padding: 25px;
 }
 
-/* Header */
+
 .header {
     text-align: center;
     background-color: #87ceeb;
@@ -34,7 +34,7 @@ body {
     font-weight: normal;
 }
 
-/* Form and Sections */
+
 form {
     width: 100%;
     max-width: 520px;
@@ -56,7 +56,7 @@ legend {
     padding: 0 10px;
 }
 
-/* Tables */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -74,12 +74,12 @@ td:first-child {
     width: 35%;
 }
 
-/* Labels */
+
 label {
     font-weight: bold;
 }
 
-/* Text Fields */
+
 input[type="text"],
 input[type="number"],
 input[type="email"],
@@ -100,7 +100,7 @@ input:focus {
     box-shadow: 0 0 4px rgba(26, 127, 181, 0.3);
 }
 
-/* Hint and Links */
+
 .hint {
     font-size: 12px;
     color: #666666;
@@ -122,7 +122,7 @@ input:focus {
     text-decoration: underline;
 }
 
-/* Error and Result Messages */
+
 .error {
     color: red;
     font-size: 13px;
@@ -138,7 +138,7 @@ input:focus {
     margin: 10px 0;
 }
 
-/* Buttons */
+
 input[type="submit"],
 button {
     padding: 10px 20px;
@@ -172,7 +172,7 @@ input[type="reset"]:hover {
     background-color: #bbbbbb;
 }
 
-/* Footer */
+
 .footer {
     background-color: #1a7fb5;
     color: white;
@@ -188,7 +188,7 @@ input[type="reset"]:hover {
     font-weight: normal;
 }
 
-/* Responsive Design */
+
 @media screen and (max-width: 600px) {
     body {
         padding: 12px;

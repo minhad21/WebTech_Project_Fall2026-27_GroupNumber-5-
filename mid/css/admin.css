@@ -13,7 +13,7 @@ body {
     padding: 25px;
 }
 
-/* Header */
+
 .header {
     text-align: center;
     background-color: #a5d6a7;
@@ -34,7 +34,7 @@ body {
     font-weight: normal;
 }
 
-/* Form and Sections */
+
 form {
     width: 100%;
     max-width: 900px;
@@ -56,7 +56,7 @@ legend {
     padding: 0 10px;
 }
 
-/* Tables */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -74,12 +74,12 @@ td:first-child {
     width: 35%;
 }
 
-/* Labels */
+
 label {
     font-weight: bold;
 }
 
-/* Text Fields */
+
 input[type="text"],
 input[type="number"],
 input[type="email"],
@@ -100,7 +100,7 @@ input:focus {
     box-shadow: 0 0 4px rgba(46, 125, 50, 0.3);
 }
 
-/* Hint and Links */
+
 .hint {
     font-size: 12px;
     color: #666666;
@@ -122,7 +122,7 @@ input:focus {
     text-decoration: underline;
 }
 
-/* Error and Result Messages */
+
 .error {
     color: red;
     font-size: 13px;
@@ -139,7 +139,7 @@ input:focus {
     margin: 10px 0;
 }
 
-/* Buttons */
+
 input[type="submit"],
 button {
     padding: 10px 20px;
@@ -173,7 +173,7 @@ input[type="reset"]:hover {
     background-color: #bbbbbb;
 }
 
-/* Dashboard tables */
+
 th {
     background-color: #2e7d32;
     color: white;
@@ -196,13 +196,13 @@ table[border="1"] tr:nth-child(even) td {
     background-color: #b52a37;
 }
 
-/* Header attached to the navigation bar */
+
 .header.attached {
     border-radius: 6px 6px 0 0;
     margin-bottom: 0;
 }
 
-/* Navigation Bar */
+
 .topnav {
     display: flex;
     gap: 12px;
@@ -229,7 +229,7 @@ table[border="1"] tr:nth-child(even) td {
     background-color: #e3f4e3;
 }
 
-/* Welcome text and Logout */
+
 .userbar {
     max-width: 900px;
     margin: 0 auto 15px;
@@ -258,7 +258,7 @@ input[type="button"]:hover {
     background-color: #b52a37;
 }
 
-/* Footer */
+
 .footer {
     background-color: #2e7d32;
     color: white;
@@ -274,7 +274,7 @@ input[type="button"]:hover {
     font-weight: normal;
 }
 
-/* Responsive Design */
+
 @media screen and (max-width: 600px) {
     body {
         padding: 12px;

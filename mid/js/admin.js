@@ -1,4 +1,4 @@
-// ---------- Dashboard page (runs on admin.html) ----------
+
 function checkLogin()
 {
     let user = null;
@@ -31,12 +31,11 @@ function logout()
     {
     }
 
-    // after logout, go back to the Home page
+    
     window.location.href = "index.html";
 }
 
 
-// ---------- Summary Form ----------
 function validateSummaryForm()
 {
     let validUsers = validateCount("TotalUsers", "UsersError", "Total Users");
@@ -57,7 +56,7 @@ function validateSummaryForm()
         Result.textContent = "";
     }
 
-    // always false, so the page does not reload
+   
     return false;
 }
 
@@ -99,7 +98,7 @@ function clearSummaryErrors()
 }
 
 
-// ---------- Category Form ----------
+
 function addCategory()
 {
     let name = document.getElementById("CategoryName").value.trim();
@@ -120,7 +119,7 @@ function addCategory()
         return false;
     }
 
-    // do not allow the same category twice
+   
     let rows = table.getElementsByTagName("tr");
     for(let i = 1; i < rows.length; i++)
     {
@@ -154,7 +153,7 @@ function addCategory()
     Message.textContent = "Category Added: " + name;
     document.getElementById("CategoryName").value = "";
 
-    // always false, so the page does not reload
+    
     return false;
 }
 
