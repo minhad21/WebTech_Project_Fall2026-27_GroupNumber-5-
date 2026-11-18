@@ -14,23 +14,23 @@ function collect_data()
     let validConfirmPassword = validateConfirmPassword();
 
     if(validName && validAge && validEmail && validGender &&
-   validDOB && validPhone && validAddress && validCountry &&
-   validUsername && validPassword && validConfirmPassword)
-{
-    alert("Registration Successful!");
+       validDOB && validPhone && validAddress && validCountry &&
+       validUsername && validPassword && validConfirmPassword)
+    {
+        alert("Registration Successful!");
 
-    window.location.href = "customer_login.html";
+        window.location.href = "customer_login.html";
 
-    return false;
+        return false;
+    }
+    else
+    {
+        return false;
+    }
 }
-else
-{
-    return false;
-}
-}
 
 
-// Name Validation
+
 function validateName()
 {
     let name = document.getElementById("Name").value.trim();
@@ -43,13 +43,13 @@ function validateName()
     }
     else
     {
-        Error.innerHTML = "Name: " + name;
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Age Validation
+
 function validAgeFunc()
 {
     let age = Number(document.getElementById("Age").value);
@@ -67,13 +67,13 @@ function validAgeFunc()
     }
     else
     {
-        Error.innerHTML = "Age: " + age;
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Email Validation
+
 function validateEmail()
 {
     let email = document.getElementById("Email").value.trim();
@@ -91,32 +91,34 @@ function validateEmail()
     }
     else
     {
-        Error.innerHTML = "Email: " + email;
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Gender Validation
+
 function validateGender()
 {
-    let gender = document.querySelector('input[name="gender"]:checked');
     let Error = document.getElementById("GenderError");
 
-    if(gender == null)
+    let male = document.getElementById("Male");
+    let female = document.getElementById("Female");
+
+    if(male.checked == false && female.checked == false)
     {
         Error.innerHTML = "Please select your gender";
         return false;
     }
     else
     {
-        Error.innerHTML = "Gender: " + gender.value;
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// DOB Validation
+
 function validateDOB()
 {
     let dob = document.getElementById("DOB").value;
@@ -134,13 +136,13 @@ function validateDOB()
     }
     else
     {
-        Error.innerHTML = "Date of Birth: " + dob;
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Phone Validation
+
 function validatePhone()
 {
     let phone = document.getElementById("Phone").value.trim();
@@ -158,13 +160,13 @@ function validatePhone()
     }
     else
     {
-        Error.innerHTML = "Phone: " + phone;
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Address Validation
+
 function validateAddress()
 {
     let address = document.getElementById("Address").value.trim();
@@ -177,13 +179,13 @@ function validateAddress()
     }
     else
     {
-        Error.innerHTML = "Address: " + address;
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Country Validation
+
 function validateCountry()
 {
     let country = document.getElementById("Country").value;
@@ -196,13 +198,13 @@ function validateCountry()
     }
     else
     {
-        Error.innerHTML = "Country: " + country;
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Username Validation
+
 function validateUsername()
 {
     let username = document.getElementById("username").value.trim();
@@ -215,13 +217,13 @@ function validateUsername()
     }
     else
     {
-        Error.innerHTML = "Username: " + username;
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Password Validation
+
 function validatePassword()
 {
     let password = document.getElementById("password").value;
@@ -239,13 +241,13 @@ function validatePassword()
     }
     else
     {
-        Error.innerHTML = "Password is valid";
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Confirm Password Validation
+
 function validateConfirmPassword()
 {
     let password = document.getElementById("password").value;
@@ -264,13 +266,13 @@ function validateConfirmPassword()
     }
     else
     {
-        Error.innerHTML = "Password matched";
+        Error.innerHTML = "";
         return true;
     }
 }
 
 
-// Reset Form
+
 function resetForm()
 {
     let errors = [
